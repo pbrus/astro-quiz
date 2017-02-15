@@ -1,0 +1,277 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+/*body {
+	line-height: 1;
+}*/
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Astro Quiz section */
+
+body
+{
+	font-size: 30px;
+	font-family: 'Varela Round', sans-serif;
+	color: #fff;
+	max-width: 100vw;
+	background-color: #1a1a1a;
+}
+
+header
+{
+	padding: 2% 0 3% 0;
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+}
+
+header > h1
+{
+	display: inline-block;
+	border-bottom: 1px solid #1367ef;
+	border-bottom-width: 4px;
+}
+
+.welcome
+{
+	display: flex;
+	align-items: center;
+}
+
+.moon
+{
+	flex-basis: 50%;
+	text-align: right;
+}
+
+.user-input
+{
+	flex-basis: 47%;
+	padding-left: 3%;
+}
+
+.user-input > form
+{
+	width: 280px;
+	text-align: center;
+}
+
+input
+{
+	width: 250px;
+	height: 50px;
+	padding: 5px 10px;
+	margin-top: 15px;
+	font-size: 20px;
+	border-radius: 8px;
+	box-sizing: border-box;
+}
+
+input[type=text]
+{
+	background-color: #e6e6e6;
+	border: 3px solid #1367ef;
+}
+
+input[type=submit]
+{
+	letter-spacing: 2px;
+	border: none;
+	background-color: #1367ef;
+	color: #fff;
+	font-weight: bold;
+}
+
+input[type=submit]:hover
+{
+	cursor: pointer;
+	background-color: #2875f0;
+}
+
+input[type=text]:focus,
+input[type=submit]:focus
+{
+	box-shadow: 0px 0px 10px 2px rgba(19,103,239,0.7);
+}
+
+input[type=text]:focus
+{
+	background-color: #e7f0fd;
+	color: #1367ef;
+}
+
+.wrapper
+{
+	min-height: calc(100vh - 50px - 100px);
+}
+
+.footer
+{
+	height: 50px;
+	padding: 40px 0 60px 0;
+	display: flex;
+	align-items: center;
+	font-size: 0.6em;
+	line-height: 0.8em;
+}
+
+.footer a, .footer a:visited
+{
+	color: #fff;
+	text-decoration: none;
+	border-bottom: solid 2px #1367ef;
+}
+
+.about
+{
+	font-style: italic;
+	flex-basis: calc(47% - 1px);
+	padding-left: 3%;
+	border-right: 1px solid #fff;
+	text-align: center;
+}
+
+.about > h2
+{
+	font-size: 1.2em;
+	font-weight: bold;
+	font-style: normal;
+}
+
+.foot-decoration
+{
+	flex-basis: 47%;
+	padding-right: 3%;
+	text-align: center;
+}
+
+.foot-decoration > img
+{
+	height: 95px;
+	width: auto;
+}
+
+@media (max-width: 699px)
+{
+	.welcome
+	{
+		display: block;
+	}
+
+	.moon
+	{
+		text-align: center;
+	}
+
+	.user-input
+	{
+		padding: 0 0 40px 0;
+		text-align: center;
+	}
+	
+	.user-input > form
+	{
+		display: inline-block;
+	}
+	
+	.wrapper
+	{
+		min-height: calc(100vh - 171px);
+	}
+	
+	.footer
+	{
+		font-size: 0.5em;
+		display: block;
+		height: 171px;
+		padding: 0;
+	}
+	
+	.about
+	{
+		border-right: none;
+		padding: 20px 0;
+	}
+	
+	.foot-decoration
+	{
+		padding: 0 0 15px 0;
+	}
+	
+	.foot-decoration > img
+	{
+		height: 80px;
+	}
+}
+
+@media (max-width: 349px)
+{
+	header
+	{
+		font-size: 1.5em;
+	}
+	
+	.wrapper
+	{
+		min-height: calc(100vh - 70px);
+	}
+	
+	.footer
+	{
+		height: 70px;
+	}
+	
+	.foot-decoration
+	{
+		display: none;
+	}
+}
+
+@media (max-width: 299px)
+{
+	body
+	{
+		min-width: 299px;
+	}
+}

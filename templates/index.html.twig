@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% block head %}
+	<meta charset="utf-8">
+	<title>Astro Quiz</title>
+	<meta name="description" content="astroquiz">
+	<meta name="keywords" content="quzi, game, astronomy">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="css/main.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+{% endblock %}
+</head>
+<body>
+	<div class="wrapper">
+{% block header %}
+		<header>
+			<h1>Astro Quiz</h1>
+		</header>
+{% endblock %}
+		<main class="welcome">
+			<div class="moon">
+				<img src="img/phtstd_small.png" srcset="img/moon_small.png 185w, img/moon_large.png 330w" sizes="(min-width: 700px) 330px, 185px" alt="">
+			</div>
+			<div class="user-input">
+				<form>
+					<input type="text" placeholder="Name">
+					<input type="submit" value="Start Quiz">
+				</form>
+			</div>
+		</main>
+	</div>
+{% block footer %}
+	<footer class="footer">
+		<div class="about">
+			<h2>Created by Przemysław Bruś</h2>
+			<br>See my another projects on <a href="https://github.com/PBrus/">GitHub</a>
+		</div>
+		<div class="foot-decoration">
+			<img src="img/leo.svg" alt="">
+		</div>
+	</footer>
+{% endblock %}
+</body>
