@@ -87,8 +87,8 @@ header > h1
 
 .user-input
 {
-	flex-basis: 47%;
-	padding-left: 3%;
+	flex-basis: 43%;
+	padding: 0 4% 0 3%;
 }
 
 .user-input > form
@@ -139,6 +139,18 @@ input[type=text]:focus
 {
 	background-color: #e7f0fd;
 	color: #1367ef;
+}
+
+.user-input > p
+{
+	color: red;
+}
+
+.user-input > p > span
+{
+	font-weight: bold;
+	letter-spacing: 3px;
+	font-size: 1.2em;
 }
 
 .wrapper
@@ -206,13 +218,18 @@ input[type=text]:focus
 
 	.user-input
 	{
-		padding: 0 0 40px 0;
+		padding: 0 3% 40px 3%;
 		text-align: center;
 	}
 	
 	.user-input > form
 	{
 		display: inline-block;
+	}
+	
+	.user-input > p
+	{
+		font-size: 0.8em;
 	}
 	
 	.wrapper
@@ -252,6 +269,11 @@ input[type=text]:focus
 		font-size: 1.5em;
 	}
 	
+	.user-input > p
+	{
+		font-size: 0.6em;
+	}
+	
 	.wrapper
 	{
 		min-height: calc(100vh - 70px);
@@ -273,5 +295,13 @@ input[type=text]:focus
 	body
 	{
 		min-width: 299px;
+	}
+	
+	
+	.user-input > p
+	{
+		display: inline-block;
+		max-width: 260px;
+		padding: 0;
 	}
 }
