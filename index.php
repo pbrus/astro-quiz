@@ -6,14 +6,21 @@ $twig = new Twig_Environment($loader);
 $state = True;
 $error = "None";
 
-$questfile = new File("questions.txt");
-if (!$questfile->readable())
-{
-	$state = False;
-	$error = $questfile->error();
+$questfile = new QuestionFile("questions.txt");
+
+if (!($questfile->readable() && $questfile->properSize())) {
+    $state = False;
+    $error = $questfile->error();
+} else {
+    $nqst = $questfile->amountQuestions();
+    $questions = array();
+    
+    for ($i = 0; $i < $nqst; $i++) {
+        $questions[$i] = new Question($questfile->readQuestion());
+    }
 }
 
 echo $twig->render('index.html.twig', array(
-		'state' => $state,
-		'error' => $error
+        'state' => $state,
+        'error' => $error
 ));
