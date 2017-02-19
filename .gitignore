@@ -2,4 +2,4 @@ composer.json
 composer.lock
 vendor
 img/moonsketch.xcf
-questions.txt
+files/questions.txt

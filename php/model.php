@@ -41,13 +41,13 @@ class Question
     {
         $peridx = array();      // permutation indices
         $rand = array();
-        
+
         for ($i = 0; $i < self::NUMANS; $i++) {
             $val = $this->randExclusion($peridx);
             $peridx[$i] = $val;
             $rand["key".(string)$val] = $this->ans["key".(string)$val];
         }
-        
+
         return $rand;
     }
 
@@ -184,5 +184,37 @@ class QuestionFile extends File
         }
 
         return $question;
+    }
+}
+
+class User
+{
+    private const MINLEN = 3;
+    private $name;
+    private $points = 0;
+
+    public function __construct($username)
+    {
+        $this->name = $username;
+        $this->checkName();
+    }
+
+    private function checkName()
+    {
+        if (empty($this->name)) {
+            throw new Exception("Please, fill the form out");
+        } else if (strlen($this->name) < self::MINLEN) {
+            throw new Exception("The name must contain at least " . self::MINLEN . " letters");
+        }
+    }
+
+    public function error()
+    {
+        return $this->error;
+    }
+
+    public function user()
+    {
+        return $this->user;
     }
 }
