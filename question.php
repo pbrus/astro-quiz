@@ -9,10 +9,13 @@ $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
 $twig = new Twig_Environment($loader);
 
 $questions = $_SESSION['questions'];
-try {
-    $user = new User($_POST['name']);
-} catch (Exception $e) {
-    $_SESSION['exception'] = $e->getMessage();
-    header("Location: index.php");
-    exit;
+$user = new User($_POST['name']);
+
+if (!$user->validName()) {
+    $error = $user->error();
+    echo $twig->render('index.html.twig', array(
+        'loaddata' => True,
+        'validform' => True,
+        'formerror' => $error
+    ));
 }

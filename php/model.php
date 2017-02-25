@@ -92,6 +92,16 @@ class File
     public function __construct($str)
     {
         $this->filename = $str;
+        $this->readable();
+    }
+
+    private function readable()
+    {
+        if (!file_exists($this->filename)) {
+            throw new NoFileException("Cannot find " . $this->filename . " file");
+        } else if (!$this->ptr = @fopen($this->filename, 'r')) {
+            throw new NoFileAccessException("Cannot read " . $this->filename . " file");
+        }
     }
 
     public function __destruct()
@@ -99,17 +109,6 @@ class File
         if ($this->ptr != NULL) {
             fclose($this->ptr);
         }
-    }
-
-    public function readable()
-    {
-        $state = True;
-        if (!$this->ptr = @fopen($this->filename, 'r')) {
-            $this->error = "Cannot read " . $this->filename . " file";
-            $state = False;
-        }
-
-        return $state;
     }
 
     public function error()
@@ -140,6 +139,14 @@ class File
 
         return $lines;
     }
+}
+
+class NoFileException extends Exception
+{
+}
+
+class NoFileAccessException extends Exception
+{
 }
 
 class QuestionFile extends File
@@ -192,20 +199,29 @@ class User
     private const MINLEN = 3;
     private $name;
     private $points = 0;
+    private $error;
 
     public function __construct($username)
     {
         $this->name = $username;
-        $this->checkName();
     }
 
-    private function checkName()
+    public function validName()
     {
+        $state = True;
+
         if (empty($this->name)) {
-            throw new Exception("Please, fill the form out");
+            $state = False;
+            $this->error = "Please, fill the form out";
         } else if (strlen($this->name) < self::MINLEN) {
-            throw new Exception("The name must contain at least " . self::MINLEN . " letters");
+            $state = False;
+            $this->error = "The name must contain at least " . self::MINLEN . " letters";
+        } else if (preg_match('/[^a-zA-Z\s_]/', $this->name)) {
+            $state = False;
+            $this->error = "Please, use only letters, spaces or underscores";
         }
+
+        return $state;
     }
 
     public function error()
@@ -213,8 +229,8 @@ class User
         return $this->error;
     }
 
-    public function user()
+    public function name()
     {
-        return $this->user;
+        return $this->name;
     }
 }

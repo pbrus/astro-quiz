@@ -8,12 +8,29 @@ if (!isset($_SESSION)) {
 $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
 $twig = new Twig_Environment($loader);
 
-$state = True;
+$loaddata = True;
 $error = "None";
-$questfile = new QuestionFile("files/questions.txt");
 
-if (!($questfile->readable() && $questfile->properSize())) {
-    $state = False;
+try {
+    $questfile = new QuestionFile("files/questions.txt");
+} catch (NoFileException $e) {
+    $loaddata = False;
+    $error = $e->getMessage();
+} catch (NoFileAccessException $e) {
+    $loaddata = False;
+    $error = $e->getMessage();
+}
+
+if (!$loaddata) {
+    echo $twig->render('index.html.twig', array(
+        'loaddata' => $loaddata,
+        'dataerror' => $error
+    ));
+    exit;
+}
+
+if (!$questfile->properSize()) {
+    $loaddata = False;
     $error = $questfile->error();
 } else {
     $nqst = $questfile->amountQuestions();
@@ -27,6 +44,6 @@ if (!($questfile->readable() && $questfile->properSize())) {
 }
 
 echo $twig->render('index.html.twig', array(
-        'state' => $state,
-        'error' => $error
+        'loaddata' => $loaddata,
+        'dataerror' => $error
 ));
