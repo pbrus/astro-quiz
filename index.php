@@ -2,9 +2,9 @@
 
 require_once __DIR__.'/vendor/autoload.php';
 require_once __DIR__.'/php/model.php';
-if (!isset($_SESSION)) {
-    session_start();
-}
+require_once __DIR__.'/php/session.php';
+SimpleSession::start();
+
 $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
 $twig = new Twig_Environment($loader);
 
@@ -40,7 +40,10 @@ if (!$questfile->properSize()) {
         $questions[$i] = new Question($questfile->readQuestion());
     }
 
-    $_SESSION['questions'] = $questions;
+    SimpleSession::addVar(array(
+        'questions' => $questions,
+        'numquests' => $nqst
+    ));
 }
 
 echo $twig->render('index.html.twig', array(

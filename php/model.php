@@ -218,7 +218,7 @@ class User
             $this->error = "The name must contain at least " . self::MINLEN . " letters";
         } else if (preg_match('/[^a-zA-Z\s_]/', $this->name)) {
             $state = False;
-            $this->error = "Please, use only letters, spaces or underscores";
+            $this->error = "Please, use only Latin letters, spaces or underscores";
         }
 
         return $state;
