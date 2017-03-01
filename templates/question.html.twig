@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-{{ block('head', "index.html.twig") }}
+    {{ block('head', "index.html.twig") }}
+    <link href="css/fontello.css" rel="stylesheet">
 </head>
 <body>
     <div class="wrapper">
     {{ block('header', "index.html.twig") }}
-    {{ user }}<br>
-    {{ nqst }}<br><br>
-    {{ questions.0.get }}<br>
-    {% for i in questions.0.getRandAnswers %}
-        {{ i }}<br>
-    {% endfor %}
+        <main class="question-content">
+            <div class="info-panel">
+                <div class="info-for-user">
+                <p>
+                    <h2>{{ user.name }}</h2><br>
+                    Question for {# arrquest[idx].weight #}4
+                    {% if arrquest[idx].weight != 1 %}
+                        points
+                    {% else %}
+                        point
+                    {% endif %}
+                </p>
+                </div>
+                <div class="next-question">
+                    Question {{ idx + 1 }}/{{ nquest }} <span class="icon-right-circled" aria-hidden="true"></span>
+                </div>
+            </div>
+        </main>
     </div>
     {{ block('footer', "index.html.twig") }}
 </body>

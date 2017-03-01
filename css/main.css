@@ -219,6 +219,47 @@ form p
   width: auto;
 }
 
+/* Question subsection */
+
+.question-content
+{
+  margin: 0 6%;
+  font-style: italic;
+}
+
+.info-panel
+{
+  display: flex;
+  padding-bottom: 30px;
+}
+
+.info-for-user
+{
+  flex-basis: 50%;
+  font-size: 0.65em;
+}
+
+.info-for-user > h2
+{
+  display: inline-block;
+  font-size: 1.3em;
+  margin-bottom: 6px;
+}
+
+.next-question
+{
+  flex-basis: 50%;
+  text-align: right;
+  font-size: 0.9em;
+  line-height: 1.8em;
+}
+
+.icon-right-circled:before
+{
+  font-size: 1.1em;
+  color: tomato;
+}
+
 @media (max-width: 699px)
 {
   .welcome
@@ -311,7 +352,6 @@ form p
   {
     min-width: 299px;
   }
-
 
   .user-input > p
   {

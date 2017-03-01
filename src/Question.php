@@ -79,6 +79,11 @@ class Question
         return $points;
     }
 
+    public function weight()
+    {
+        return $this->pts;
+    }
+
     public function image()
     {
         return $this->img;

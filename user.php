@@ -19,7 +19,7 @@ if (!$user->validName()) {      // add method checking is a name is duplicated
     ));
 } else {
     Session::addVar(array(
-        'nick' => $user->name()
+        'user' => $user
     ));
     header('Location: question.php');
 }

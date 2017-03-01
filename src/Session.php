@@ -16,6 +16,12 @@ class Session
         return $_SESSION[$idx];
     }
 
+    public static function updateVar($idx, $upvalue)
+    {
+        $tmp[$idx] = $upvalue;
+        self::addVar($tmp);
+    }
+
     public static function start()
     {
         if (!isset($_SESSION)) {

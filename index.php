@@ -34,16 +34,18 @@ if (!$questfile->properSize()) {
     $loaddata = False;
     $error = $questfile->error();
 } else {
-    $nqst = $questfile->amountQuestions();
-    $questions = array();
+    $nquest = $questfile->amountQuestions();
+    $arrquest = array();
+    $idx = 0;
 
-    for ($i = 0; $i < $nqst; $i++) {
-        $questions[$i] = new Question($questfile->readQuestion());
+    for ($i = 0; $i < $nquest; $i++) {
+        $arrquest[$i] = new Question($questfile->readQuestion());
     }
 
     Session::addVar(array(
-        'questions' => $questions,
-        'numquests' => $nqst
+        'nquest' => $nquest,
+        'arrquest' => $arrquest,
+        'idx' => $idx
     ));
 }
 
