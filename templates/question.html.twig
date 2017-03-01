@@ -6,6 +6,12 @@
 <body>
     <div class="wrapper">
     {{ block('header', "index.html.twig") }}
+    {{ user }}<br>
+    {{ nqst }}<br><br>
+    {{ questions.0.get }}<br>
+    {% for i in questions.0.getRandAnswers %}
+        {{ i }}<br>
+    {% endfor %}
     </div>
     {{ block('footer', "index.html.twig") }}
 </body>

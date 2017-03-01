@@ -1,9 +1,9 @@
 <?php
 
+use Brus\Session;
+use AstroQuiz\User;
 require_once __DIR__.'/vendor/autoload.php';
-require_once __DIR__.'/php/model.php';
-require_once __DIR__.'/php/session.php';
-SimpleSession::start();
+Session::start();
 
 $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
 $twig = new Twig_Environment($loader);
@@ -18,8 +18,8 @@ if (!$user->validName()) {      // add method checking is a name is duplicated
         'formerror' => $error
     ));
 } else {
-    SimpleSession::addVar(array(
-        'nick' => $user
+    Session::addVar(array(
+        'nick' => $user->name()
     ));
     header('Location: question.php');
 }

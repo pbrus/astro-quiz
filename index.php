@@ -1,9 +1,10 @@
 <?php
 
+use Brus\Session;
+use AstroQuiz\QuestionFile;
+use AstroQuiz\Question;
 require_once __DIR__.'/vendor/autoload.php';
-require_once __DIR__.'/php/model.php';
-require_once __DIR__.'/php/session.php';
-SimpleSession::start();
+Session::start();
 
 $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
 $twig = new Twig_Environment($loader);
@@ -13,10 +14,10 @@ $error = "None";
 
 try {
     $questfile = new QuestionFile("files/questions.txt");
-} catch (NoFileException $e) {
+} catch (Brus\NoFileException $e) {
     $loaddata = False;
     $error = $e->getMessage();
-} catch (NoFileAccessException $e) {
+} catch (Brus\NoFileAccessException $e) {
     $loaddata = False;
     $error = $e->getMessage();
 }
@@ -40,7 +41,7 @@ if (!$questfile->properSize()) {
         $questions[$i] = new Question($questfile->readQuestion());
     }
 
-    SimpleSession::addVar(array(
+    Session::addVar(array(
         'questions' => $questions,
         'numquests' => $nqst
     ));

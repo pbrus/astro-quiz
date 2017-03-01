@@ -1,6 +1,8 @@
 <?php
 
-class SimpleSession     // Session name is used by Symfony
+namespace Brus;
+
+class Session
 {
     public static function addVar($arr)
     {
