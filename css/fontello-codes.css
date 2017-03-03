@@ -1,2 +1,4 @@
 
 .icon-right-circled:before { content: '\e800'; } /* '' */
+.icon-check:before { content: '\e801'; } /* '' */
+.icon-check-empty:before { content: '\f096'; } /* '' */

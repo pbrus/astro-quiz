@@ -9,10 +9,10 @@
     {{ block('header', "index.html.twig") }}
         <main class="question-content">
             <div class="info-panel">
-                <div class="info-for-user">
+                <div class="nick">
+                <h2>{{ user.name }}</h2><br>
                 <p>
-                    <h2>{{ user.name }}</h2><br>
-                    Question for {# arrquest[idx].weight #}4
+                    Question for <span class="weight-question">{{ arrquest[idx].weight }}</span>
                     {% if arrquest[idx].weight != 1 %}
                         points
                     {% else %}
@@ -20,9 +20,27 @@
                     {% endif %}
                 </p>
                 </div>
-                <div class="next-question">
-                    Question {{ idx + 1 }}/{{ nquest }} <span class="icon-right-circled" aria-hidden="true"></span>
+                <div class="counter-question">
+                    Question {{ idx + 1 }}/{{ nquest }}
                 </div>
+            </div>
+            <div class="question">
+                <p>
+                    {{ arrquest[idx].get }}
+                </p>
+                <form method="POST" action="evalquest.php" class="answers-form">
+                    {% for i, val in arrquest[idx].getRandAnswers %}
+                        {% set id = "radio" ~ i|last %}
+                        <p>
+                            <input type="radio" name="answer" value="{{ i }}" id="{{ id }}">
+                            <label for="{{ id }}">
+                                <span class="icon-check" aria-hidden="true"></span>
+                                <span class="icon-check-empty" aria-hidden="true"></span>
+                                <span>{{ val }}</span>
+                            </label>
+                        </p>
+                    {% endfor %}
+                </form>
             </div>
         </main>
     </div>

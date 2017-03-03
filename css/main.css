@@ -91,13 +91,13 @@ header > h1
   padding: 0 4% 0 3%;
 }
 
-.user-input > form
+.user-form
 {
   width: 280px;
   text-align: center;
 }
 
-input
+.user-form input
 {
   width: 250px;
   height: 50px;
@@ -108,13 +108,13 @@ input
   box-sizing: border-box;
 }
 
-input[type=text]
+.user-form input[type=text]
 {
   background-color: #e6e6e6;
   border: 3px solid #1367ef;
 }
 
-input[type=submit]
+.user-form input[type=submit]
 {
   letter-spacing: 2px;
   border: none;
@@ -123,25 +123,25 @@ input[type=submit]
   font-weight: bold;
 }
 
-input[type=submit]:hover
+.user-form input[type=submit]:hover
 {
   cursor: pointer;
   background-color: #2875f0;
 }
 
-input[type=text]:focus,
-input[type=submit]:focus
+.user-form input[type=text]:focus,
+.user-form input[type=submit]:focus
 {
   box-shadow: 0px 0px 10px 2px rgba(19,103,239,0.7);
 }
 
-input[type=text]:focus
+.user-form input[type=text]:focus
 {
   background-color: #e7f0fd;
   color: #1367ef;
 }
 
-form p
+.user-form p
 {
   color: red;
   font-style: italic;
@@ -162,7 +162,7 @@ form p
   font-size: 1.2em;
 }
 
-form p
+.user-form p
 {
   font-size: 0.7em;
   padding: 0;
@@ -233,31 +233,82 @@ form p
   padding-bottom: 30px;
 }
 
-.info-for-user
+.nick
 {
-  flex-basis: 50%;
+  flex-basis: 47%;
   font-size: 0.65em;
+  padding-right: 3%;
 }
 
-.info-for-user > h2
+.nick > h2
 {
   display: inline-block;
   font-size: 1.3em;
-  margin-bottom: 6px;
 }
 
-.next-question
+.weight-question
 {
-  flex-basis: 50%;
+  font-weight: bold;
+  font-size: 1.15em;
+}
+
+.counter-question
+{
+  flex-basis: 47%;
+  padding-left: 3%;
   text-align: right;
   font-size: 0.9em;
   line-height: 1.8em;
 }
 
-.icon-right-circled:before
+.question
 {
-  font-size: 1.1em;
-  color: tomato;
+  width: 70%;
+  margin: 2% auto 8% auto;
+/*
+  border: 1px solid #fff;
+*/
+}
+
+.question > p
+{
+  margin-bottom: 3%;
+}
+
+.answers-form input[type="radio"]
+{
+  display: none;
+}
+
+.answers-form > p
+{
+  margin: 0 4% 2% 4%;
+}
+
+.answers-form > p:last-child
+{
+  margin-bottom: 0;
+}
+
+.answers-form label
+{
+  display: inline-flex;
+}
+
+.answers-form label:hover
+{
+  cursor: pointer;
+  text-shadow: 1px 1px 8px #1367ef;
+}
+
+.answers-form input[type="radio"]:checked ~ label
+{
+  color: gold;
+}
+
+.icon-check
+{
+  display: none;
 }
 
 @media (max-width: 699px)

@@ -17,5 +17,3 @@ echo $twig->render('question.html.twig', array(
     'arrquest' => Session::getVar('arrquest'),
     'idx' => $idx
 ));
-
-Session::updateVar('idx', $idx + 1);
