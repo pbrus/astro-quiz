@@ -12,8 +12,8 @@
                 <div class="nick">
                 <h2>{{ user.name }}</h2><br>
                 <p>
-                    Question for <span class="weight-question">{{ arrquest[idx].weight }}</span>
-                    {% if arrquest[idx].weight != 1 %}
+                    Question for <span class="weight-question">{{ arrQuest[idx].weight }}</span>
+                    {% if arrQuest[idx].weight != 1 %}
                         points
                     {% else %}
                         point
@@ -21,29 +21,58 @@
                 </p>
                 </div>
                 <div class="counter-question">
-                    Question {{ idx + 1 }}/{{ nquest }}
+                    Question {{ idx + 1 }}/{{ nQuest }}
                 </div>
             </div>
             <div class="question">
                 <p>
-                    {{ arrquest[idx].get }}
+                    {{ arrQuest[idx].get }}
                 </p>
                 <form method="POST" action="evalquest.php" class="answers-form">
-                    {% for i, val in arrquest[idx].getRandAnswers %}
+                    {% for i, val in arrQuest[idx].getRandAnswers %}
                         {% set id = "radio" ~ i|last %}
                         <p>
                             <input type="radio" name="answer" value="{{ i }}" id="{{ id }}">
-                            <label for="{{ id }}">
-                                <span class="icon-check" aria-hidden="true"></span>
-                                <span class="icon-check-empty" aria-hidden="true"></span>
-                                <span>{{ val }}</span>
+                            <label for="{{ id }}" class="possible-answer">
+                                <span class="checkbox-icon icon-check-empty" aria-hidden="true"></span>{{ val }}
                             </label>
                         </p>
                     {% endfor %}
+                    <p>
+                        <input type="submit" id="next-question" disabled="disabled">
+                        <label for="next-question" class="next-question">
+                            <span class="icon-right-circled2" aria-hidden="true"></span>
+                            <span class="next-question-text">
+                            {% if nQuest != idx+1 %}
+                                Next question
+                            {% else %}
+                                Finish Quiz
+                            {% endif %}
+                            </span>
+                        </label>
+                    </p>
                 </form>
             </div>
         </main>
     </div>
     {{ block('footer', "index.html.twig") }}
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            $(".possible-answer").click(function(){
+                $("#next-question").prop("disabled", false);
+                $(".next-question").addClass("next-question-active");
+            });
+
+            $(".possible-answer").click(function(){
+                $(".checkbox-icon").removeClass("icon-check");
+                $(".checkbox-icon").addClass("icon-check-empty");
+                $(this).find(".checkbox-icon").removeClass("icon-check-empty");
+                $(this).find(".checkbox-icon").addClass("icon-check");
+            });
+        });
+
+    </script>
 </body>
 </html>

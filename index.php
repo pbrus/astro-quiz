@@ -9,47 +9,47 @@ Session::start();
 $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
 $twig = new Twig_Environment($loader);
 
-$loaddata = True;
+$loadData = True;
 $error = "None";
 
 try {
-    $questfile = new QuestionFile("files/questions.txt");
+    $questFile = new QuestionFile("files/questions.txt");
 } catch (Brus\NoFileException $e) {
-    $loaddata = False;
+    $loadData = False;
     $error = $e->getMessage();
 } catch (Brus\NoFileAccessException $e) {
-    $loaddata = False;
+    $loadData = False;
     $error = $e->getMessage();
 }
 
-if (!$loaddata) {
+if (!$loadData) {
     echo $twig->render('index.html.twig', array(
-        'loaddata' => $loaddata,
-        'dataerror' => $error
+        'loadData' => $loadData,
+        'dataError' => $error
     ));
     exit;
 }
 
-if (!$questfile->properSize()) {
-    $loaddata = False;
-    $error = $questfile->error();
+if (!$questFile->properSize()) {
+    $loadData = False;
+    $error = $questFile->error();
 } else {
-    $nquest = $questfile->amountQuestions();
-    $arrquest = array();
+    $nQuest = $questFile->amountQuestions();
+    $arrQuest = array();
     $idx = 0;
 
-    for ($i = 0; $i < $nquest; $i++) {
-        $arrquest[$i] = new Question($questfile->readQuestion());
+    for ($i = 0; $i < $nQuest; $i++) {
+        $arrQuest[$i] = new Question($questFile->readQuestion());
     }
 
     Session::addVar(array(
-        'nquest' => $nquest,
-        'arrquest' => $arrquest,
+        'nQuest' => $nQuest,
+        'arrQuest' => $arrQuest,
         'idx' => $idx
     ));
 }
 
 echo $twig->render('index.html.twig', array(
-        'loaddata' => $loaddata,
-        'dataerror' => $error
+        'loadData' => $loadData,
+        'dataError' => $error
 ));

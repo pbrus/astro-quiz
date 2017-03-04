@@ -10,9 +10,9 @@ class User
     private $points = 0;
     private $error;
 
-    public function __construct($username)
+    public function __construct($userName)
     {
-        $this->name = $username;
+        $this->name = $userName;
     }
 
     public function validName()

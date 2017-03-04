@@ -4,29 +4,29 @@ namespace Brus;
 
 class File
 {
-    private $filename;
-    private $ptr;
+    private $fileName;
+    private $filePointer;
     protected $error;
 
     public function __construct($str)
     {
-        $this->filename = $str;
+        $this->fileName = $str;
         $this->readable();
     }
 
     private function readable()
     {
-        if (!file_exists($this->filename)) {
-            throw new NoFileException("Cannot find " . $this->filename . " file");
-        } else if (!$this->ptr = @fopen($this->filename, 'r')) {
-            throw new NoFileAccessException("Cannot read " . $this->filename . " file");
+        if (!file_exists($this->fileName)) {
+            throw new NoFileException("Cannot find " . $this->fileName . " file");
+        } else if (!$this->filePointer = @fopen($this->fileName, 'r')) {
+            throw new NoFileAccessException("Cannot read " . $this->fileName . " file");
         }
     }
 
     public function __destruct()
     {
-        if ($this->ptr != NULL) {
-            fclose($this->ptr);
+        if ($this->filePointer != NULL) {
+            fclose($this->filePointer);
         }
     }
 
@@ -37,12 +37,12 @@ class File
 
     public function name()
     {
-        return $this->filename;
+        return $this->fileName;
     }
 
     protected function descriptor()
     {
-        return $this->ptr;
+        return $this->filePointer;
     }
 
     public function size()

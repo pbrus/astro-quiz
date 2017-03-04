@@ -264,7 +264,7 @@ header > h1
 .question
 {
   width: 70%;
-  margin: 2% auto 8% auto;
+  margin: 2% auto 5% auto;
 /*
   border: 1px solid #fff;
 */
@@ -273,9 +273,10 @@ header > h1
 .question > p
 {
   margin-bottom: 3%;
+  font-size: 1.2em;
 }
 
-.answers-form input[type="radio"]
+.answers-form input[type=radio]
 {
   display: none;
 }
@@ -285,28 +286,53 @@ header > h1
   margin: 0 4% 2% 4%;
 }
 
-.answers-form > p:last-child
+.answers-form > p:nth-last-child(2)
 {
-  margin-bottom: 0;
+  margin-bottom: 5%;
 }
 
-.answers-form label
+.possible-answer
 {
   display: inline-flex;
 }
 
-.answers-form label:hover
+.possible-answer:hover
 {
   cursor: pointer;
-  text-shadow: 1px 1px 8px #1367ef;
+  text-shadow: 1px 1px 8px #ffd700;
 }
 
-.answers-form input[type="radio"]:checked ~ label
+input[type=radio]:checked + label
 {
-  color: gold;
+  color: #ffd700;
 }
 
-.icon-check
+.answers-form > p:last-child
+{
+  margin: 0;
+}
+
+.next-question
+{
+  opacity: 0.2;
+  display: inline-block;
+  background-color: #808080;
+  padding: 10px 26px 10px 20px;
+  font-size: 0.7em;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-style: normal;
+  border-radius: 10px;
+}
+
+.next-question-active
+{
+  opacity: 1.0;
+  background-color: #1367ef;
+  cursor: pointer;
+}
+
+#next-question
 {
   display: none;
 }

@@ -6,7 +6,7 @@ use Brus\File;
 class QuestionFile extends File
 {
     private const NUMLINES = 8;      // lines per question
-    private $numquests = -1;
+    private $numQuests = -1;
 
     public function properSize()
     {
@@ -16,8 +16,8 @@ class QuestionFile extends File
         if ($lines % self::NUMLINES) {
             $state = False;
             $this->error = "Wrong structure in " . $this->name() . " file";
-        } else if ($this->numquests == -1) {
-            $this->numquests = $lines / self::NUMLINES;
+        } else if ($this->numQuests == -1) {
+            $this->numQuests = $lines / self::NUMLINES;
         }
 
         return $state;
@@ -25,11 +25,11 @@ class QuestionFile extends File
 
     public function amountQuestions()
     {
-        $n = $this->numquests;
+        $n = $this->numQuests;
 
         if ($n == -1) {
             if ($this->properSize()) {
-                $n = $this->numquests;
+                $n = $this->numQuests;
             }
         }
 

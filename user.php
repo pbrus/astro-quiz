@@ -13,9 +13,9 @@ $user = new User($_POST['name']);
 if (!$user->validName()) {      // add method checking is a name is duplicated
     $error = $user->error();
     echo $twig->render('index.html.twig', array(
-        'loaddata' => True,
-        'validform' => True,
-        'formerror' => $error
+        'loadData' => True,
+        'validForm' => True,
+        'formError' => $error
     ));
 } else {
     Session::addVar(array(

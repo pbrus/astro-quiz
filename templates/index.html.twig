@@ -25,17 +25,17 @@
                 <img src="img/phtstd_small.png" srcset="img/moon_small.png 185w, img/moon_large.png 330w" sizes="(min-width: 700px) 330px, 185px" alt="">
             </div>
             <div class="user-input">
-            {% if loaddata %}
+            {% if loadData %}
                 <form method="post" action="user.php" class="user-form">
-            {% if validform %}
-                <p>{{ formerror }}</p>
+            {% if validForm %}
+                <p>{{ formError }}</p>
             {% endif %}
                     <input type="text" name="name" placeholder="Name">
                     <input type="submit" value="Start Quiz">
                 </form>
             {% else %}
                 <p>
-                    <span>Error</span><br>{{ dataerror }}
+                    <span>Error</span><br>{{ dataError }}
                 </p>
             {% endif %}
             </div>

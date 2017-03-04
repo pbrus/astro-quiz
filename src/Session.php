@@ -16,9 +16,9 @@ class Session
         return $_SESSION[$idx];
     }
 
-    public static function updateVar($idx, $upvalue)
+    public static function updateVar($idx, $upValue)
     {
-        $tmp[$idx] = $upvalue;
+        $tmp[$idx] = $upValue;
         self::addVar($tmp);
     }
 

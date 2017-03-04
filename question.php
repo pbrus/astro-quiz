@@ -13,7 +13,7 @@ $idx = Session::getVar('idx');
 
 echo $twig->render('question.html.twig', array(
     'user' => Session::getVar('user'),
-    'nquest' => Session::getVar('nquest'),
-    'arrquest' => Session::getVar('arrquest'),
+    'nQuest' => Session::getVar('nQuest'),
+    'arrQuest' => Session::getVar('arrQuest'),
     'idx' => $idx
 ));

@@ -7,21 +7,21 @@ class Question
     private const NUMANS = 4;
     private $qst;
     private $ans = array();     // contains NUMANS elements
-    private $usrans;
-    private $corr;
-    private $pts;
-    private $img;
+    private $usrAns;
+    private $correct;
+    private $points;
+    private $image;
 
-    public function __construct($arrqst)
+    public function __construct($arrQst)
     {
         $j = 0;
-        $this->qst = $arrqst[$j++];
+        $this->qst = $arrQst[$j++];
         for ($i = 1; $i <= self::NUMANS; $i++) {
-            $this->ans["key".(string)$i] = $arrqst[$j++];
+            $this->ans["key".(string)$i] = $arrQst[$j++];
         }
-        $this->corr = $arrqst[$j++];
-        $this->pts = $arrqst[$j++];
-        $this->img = $arrqst[$j++];
+        $this->correct = $arrQst[$j++];
+        $this->points = $arrQst[$j++];
+        $this->image = $arrQst[$j++];
     }
 
     public function get()
@@ -41,39 +41,39 @@ class Question
 
     public function getRandAnswers()
     {
-        $peridx = array();      // permutation indices
+        $perIdx = array();      // permutation indices
         $rand = array();
 
         for ($i = 0; $i < self::NUMANS; $i++) {
-            $val = $this->randExclusion($peridx);
-            $peridx[$i] = $val;
+            $val = $this->randExclusion($perIdx);
+            $perIdx[$i] = $val;
             $rand["key".(string)$val] = $this->ans["key".(string)$val];
         }
 
         return $rand;
     }
 
-    private function randExclusion($exarr)
+    private function randExclusion($exArr)
     {
         while (True) {
             $num = rand(1,self::NUMANS);
-            if (!in_array($num, $exarr)) break;
+            if (!in_array($num, $exArr)) break;
         }
 
         return $num;
     }
 
-    public function saveUserAnswer($uans)
+    public function saveUserAnswer($userAns)
     {
-        $this->usrans = $uans;
+        $this->usrAns = $userAns;
     }
 
     public function evaluate()
     {
         $points = 0;
 
-        if ($this->usrans == $this->corr) {
-            $points = $this->pts;
+        if ($this->usrAns == $this->correct) {
+            $points = $this->points;
         }
 
         return $points;
@@ -81,11 +81,11 @@ class Question
 
     public function weight()
     {
-        return $this->pts;
+        return $this->points;
     }
 
     public function image()
     {
-        return $this->img;
+        return $this->image;
     }
 }
