@@ -11,15 +11,16 @@ $twig = new Twig_Environment($loader);
 $user = new User($_POST['name']);
 
 if (!$user->validName()) {      // add method checking is a name is duplicated
-    $error = $user->error();
+    $validFormError = $user->error();
     echo $twig->render('index.html.twig', array(
-        'loadData' => True,
-        'validForm' => True,
-        'formError' => $error
+        'loadDataStatus' => True,
+        'validFormStatus' => True,
+        'validFormError' => $validFormError
     ));
 } else {
     Session::addVar(array(
-        'user' => $user
+        'user' => $user,
+        'unselectedAnswer' => False
     ));
     header('Location: question.php');
 }

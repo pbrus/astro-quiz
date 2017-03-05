@@ -9,47 +9,47 @@ Session::start();
 $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
 $twig = new Twig_Environment($loader);
 
-$loadData = True;
-$error = "None";
+$loadDataStatus = True;
+$loadDataError = "None";
 
 try {
-    $questFile = new QuestionFile("files/questions.txt");
-} catch (Brus\NoFileException $e) {
-    $loadData = False;
-    $error = $e->getMessage();
-} catch (Brus\NoFileAccessException $e) {
-    $loadData = False;
-    $error = $e->getMessage();
+    $questionFile = new QuestionFile("files/questions.txt");
+} catch (Brus\NoFileException $err) {
+    $loadDataStatus = False;
+    $loadDataError = $err->getMessage();
+} catch (Brus\NoFileAccessException $err) {
+    $loadDataStatus = False;
+    $loadDataError = $err->getMessage();
 }
 
-if (!$loadData) {
+if (!$loadDataStatus) {
     echo $twig->render('index.html.twig', array(
-        'loadData' => $loadData,
-        'dataError' => $error
+        'loadDataStatus' => $loadDataStatus,
+        'loadDataError' => $loadDataError
     ));
     exit;
 }
 
-if (!$questFile->properSize()) {
-    $loadData = False;
-    $error = $questFile->error();
+if (!$questionFile->properSize()) {
+    $loadDataStatus = False;
+    $loadDataError = $questionFile->error();
 } else {
-    $nQuest = $questFile->amountQuestions();
-    $arrQuest = array();
-    $idx = 0;
+    $amountQuestions = $questionFile->amountQuestions();
+    $allQuestions = array();
+    $currentQuestionIndex = 0;
 
-    for ($i = 0; $i < $nQuest; $i++) {
-        $arrQuest[$i] = new Question($questFile->readQuestion());
+    for ($i = 0; $i < $amountQuestions; $i++) {
+        $allQuestions[$i] = new Question($questionFile->readQuestion());
     }
 
     Session::addVar(array(
-        'nQuest' => $nQuest,
-        'arrQuest' => $arrQuest,
-        'idx' => $idx
+        'amountQuestions' => $amountQuestions,
+        'allQuestions' => $allQuestions,
+        'currentQuestionIndex' => $currentQuestionIndex
     ));
 }
 
 echo $twig->render('index.html.twig', array(
-        'loadData' => $loadData,
-        'dataError' => $error
+        'loadDataStatus' => $loadDataStatus,
+        'loadDataError' => $loadDataError
 ));

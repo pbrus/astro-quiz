@@ -5,31 +5,31 @@ use Brus\File;
 
 class QuestionFile extends File
 {
-    private const NUMLINES = 8;      // lines per question
-    private $numQuests = -1;
+    private const LINESPERQUESTION = 8;
+    private $amountQuestions = -1;
 
     public function properSize()
     {
-        $state = True;
-        $lines = $this->size();
+        $status = True;
+        $howManyLines = $this->size();
 
-        if ($lines % self::NUMLINES) {
-            $state = False;
+        if ($howManyLines % self::LINESPERQUESTION) {
+            $status = False;
             $this->error = "Wrong structure in " . $this->name() . " file";
-        } else if ($this->numQuests == -1) {
-            $this->numQuests = $lines / self::NUMLINES;
+        } else if ($this->amountQuestions == -1) {
+            $this->amountQuestions = $howManyLines / self::LINESPERQUESTION;
         }
 
-        return $state;
+        return $status;
     }
 
     public function amountQuestions()
     {
-        $n = $this->numQuests;
+        $n = $this->amountQuestions;
 
         if ($n == -1) {
             if ($this->properSize()) {
-                $n = $this->numQuests;
+                $n = $this->amountQuestions;
             }
         }
 
@@ -40,7 +40,7 @@ class QuestionFile extends File
     {
         $question = array();
 
-        for ($i = 0; $i < self::NUMLINES; $i++) {
+        for ($i = 0; $i < self::LINESPERQUESTION; $i++) {
             $question[$i] = fgets($this->descriptor());
         }
 

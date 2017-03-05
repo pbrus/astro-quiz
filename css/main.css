@@ -263,11 +263,8 @@ header > h1
 
 .question
 {
-  width: 70%;
+  width: 80%;
   margin: 2% auto 5% auto;
-/*
-  border: 1px solid #fff;
-*/
 }
 
 .question > p
@@ -314,10 +311,11 @@ input[type=radio]:checked + label
 
 .next-question
 {
-  opacity: 0.2;
+  opacity: 1.0;
+  cursor: pointer;
+  background-color: #1367ef;
   display: inline-block;
-  background-color: #808080;
-  padding: 10px 26px 10px 20px;
+  padding: 1.5% 2.5% 1.5% 1.5%;
   font-size: 0.7em;
   letter-spacing: 2px;
   font-weight: bold;
@@ -332,9 +330,41 @@ input[type=radio]:checked + label
   cursor: pointer;
 }
 
+.next-question-active:hover
+{
+  background-color: #2875f0;
+}
+
+.next-question-active:active
+{
+  box-shadow: 0px 0px 10px 2px rgba(19,103,239,0.7);
+}
+
+.next-question-deactivate
+{
+  opacity: 0.2;
+  background-color: #808080;
+  cursor: default;
+}
+
 #next-question
 {
   display: none;
+}
+
+.unselected-answer
+{
+  font-style: italic;
+  color: red;
+  font-size: 0.7em;
+}
+
+@media (max-width: 899px)
+{
+    .question
+    {
+        font-size: 0.8em;
+    }
 }
 
 @media (max-width: 699px)
@@ -382,6 +412,7 @@ input[type=radio]:checked + label
   {
     border-right: none;
     padding: 20px 0;
+    margin-bottom: 10px;
   }
 
   .foot-decoration
@@ -393,6 +424,29 @@ input[type=radio]:checked + label
   {
     height: 80px;
   }
+
+  .question
+  {
+    font-size: 0.6em;
+  }
+}
+
+@media (max-width: 499px)
+{
+    .question
+    {
+        font-size: 0.5em;
+    }
+
+    .next-question
+    {
+      border-radius: 7px;
+    }
+
+    .next-question
+    {
+      padding: 5px 8px 5px 5px;
+    }
 }
 
 @media (max-width: 349px)
@@ -435,5 +489,10 @@ input[type=radio]:checked + label
     display: inline-block;
     max-width: 260px;
     padding: 0;
+  }
+
+  .question
+  {
+      font-size: 0.45em;
   }
 }

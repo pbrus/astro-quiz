@@ -5,28 +5,28 @@ namespace AstroQuiz;
 class Question
 {
     private const NUMANS = 4;
-    private $qst;
-    private $ans = array();     // contains NUMANS elements
-    private $usrAns;
-    private $correct;
+    private $question;
+    private $possibleAnswers = array();     // contains NUMANS elements
+    private $userAnswer;
+    private $correctAnswer;
     private $points;
     private $image;
 
-    public function __construct($arrQst)
+    public function __construct($allQuestions)
     {
         $j = 0;
-        $this->qst = $arrQst[$j++];
+        $this->question = $allQuestions[$j++];
         for ($i = 1; $i <= self::NUMANS; $i++) {
-            $this->ans["key".(string)$i] = $arrQst[$j++];
+            $this->possibleAnswers["key".(string)$i] = $allQuestions[$j++];
         }
-        $this->correct = $arrQst[$j++];
-        $this->points = $arrQst[$j++];
-        $this->image = $arrQst[$j++];
+        $this->correctAnswer = $allQuestions[$j++];
+        $this->points = $allQuestions[$j++];
+        $this->image = $allQuestions[$j++];
     }
 
     public function get()
     {
-        return $this->qst;
+        return $this->question;
     }
 
     public function amountAnswers()
@@ -36,43 +36,43 @@ class Question
 
     public function getAnswers()
     {
-        return $this->ans;
+        return $this->possibleAnswers;
     }
 
     public function getRandAnswers()
     {
-        $perIdx = array();      // permutation indices
-        $rand = array();
+        $permutationIndices = array();
+        $randomOrderAnswers = array();
 
         for ($i = 0; $i < self::NUMANS; $i++) {
-            $val = $this->randExclusion($perIdx);
-            $perIdx[$i] = $val;
-            $rand["key".(string)$val] = $this->ans["key".(string)$val];
+            $val = $this->randExclusion($permutationIndices);
+            $permutationIndices[$i] = $val;
+            $randomOrderAnswers["key".(string)$val] = $this->possibleAnswers["key".(string)$val];
         }
 
-        return $rand;
+        return $randomOrderAnswers;
     }
 
-    private function randExclusion($exArr)
+    private function randExclusion($permutationIndices)
     {
         while (True) {
-            $num = rand(1,self::NUMANS);
-            if (!in_array($num, $exArr)) break;
+            $number = rand(1, self::NUMANS);
+            if (!in_array($number, $permutationIndices)) break;
         }
 
-        return $num;
+        return $number;
     }
 
     public function saveUserAnswer($userAns)
     {
-        $this->usrAns = $userAns;
+        $this->userAnswer = $userAns;
     }
 
     public function evaluate()
     {
         $points = 0;
 
-        if ($this->usrAns == $this->correct) {
+        if ($this->userAnswer == $this->correctAnswer) {
             $points = $this->points;
         }
 

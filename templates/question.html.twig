@@ -12,8 +12,11 @@
                 <div class="nick">
                 <h2>{{ user.name }}</h2><br>
                 <p>
-                    Question for <span class="weight-question">{{ arrQuest[idx].weight }}</span>
-                    {% if arrQuest[idx].weight != 1 %}
+                    Question for
+                    <span class="weight-question">
+                        {{ allQuestions[currentQuestionIndex].weight }}
+                    </span>
+                    {% if allQuestions[currentQuestionIndex].weight != 1 %}
                         points
                     {% else %}
                         point
@@ -21,15 +24,19 @@
                 </p>
                 </div>
                 <div class="counter-question">
-                    Question {{ idx + 1 }}/{{ nQuest }}
+                    Question {{ currentQuestionIndex + 1 }}/{{ amountQuestions }}
                 </div>
             </div>
             <div class="question">
                 <p>
-                    {{ arrQuest[idx].get }}
+                    {{ allQuestions[currentQuestionIndex].get }}
                 </p>
-                <form method="POST" action="evalquest.php" class="answers-form">
-                    {% for i, val in arrQuest[idx].getRandAnswers %}
+                {% if amountQuestions != currentQuestionIndex + 1 %}
+                    <form method="POST" action="evalquestion.php" class="answers-form">
+                {% else %}
+                    <form method="POST" action="finish.php" class="answers-form">
+                {% endif %}
+                    {% for i, val in allQuestions[currentQuestionIndex].getRandAnswers %}
                         {% set id = "radio" ~ i|last %}
                         <p>
                             <input type="radio" name="answer" value="{{ i }}" id="{{ id }}">
@@ -39,17 +46,22 @@
                         </p>
                     {% endfor %}
                     <p>
-                        <input type="submit" id="next-question" disabled="disabled">
+                        <input type="submit" id="next-question">
                         <label for="next-question" class="next-question">
                             <span class="icon-right-circled2" aria-hidden="true"></span>
                             <span class="next-question-text">
-                            {% if nQuest != idx+1 %}
+                            {% if amountQuestions != currentQuestionIndex + 1 %}
                                 Next question
                             {% else %}
                                 Finish Quiz
                             {% endif %}
                             </span>
                         </label>
+                        <span class="unselected-answer">
+                        {% if unselectedAnswer %}
+                            <br>Please, choose one answer
+                        {% endif %}
+                        </span>
                     </p>
                 </form>
             </div>
@@ -60,8 +72,12 @@
     <script>
 
         $(document).ready(function(){
+            $(".next-question").addClass("next-question-deactivate");
+            $("#next-question").prop("disabled", true);
+
             $(".possible-answer").click(function(){
                 $("#next-question").prop("disabled", false);
+                $(".next-question").removeClass("next-question-deactivate");
                 $(".next-question").addClass("next-question-active");
             });
 

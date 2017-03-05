@@ -4,21 +4,21 @@ namespace Brus;
 
 class Session
 {
-    public static function addVar($arr)
+    public static function addVar($all)
     {
-        foreach ($arr as $key => $val) {
+        foreach ($all as $key => $val) {
             $_SESSION[$key] = $val;
         }
     }
 
-    public static function getVar($idx)
+    public static function getVar($name)
     {
-        return $_SESSION[$idx];
+        return $_SESSION[$name];
     }
 
-    public static function updateVar($idx, $upValue)
+    public static function updateVar($name, $upValue)
     {
-        $tmp[$idx] = $upValue;
+        $tmp[$name] = $upValue;
         self::addVar($tmp);
     }
 
