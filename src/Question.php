@@ -12,16 +12,16 @@ class Question
     private $points;
     private $image;
 
-    public function __construct($allQuestions)
+    public function __construct($questionData)
     {
         $j = 0;
-        $this->question = $allQuestions[$j++];
+        $this->question = $questionData[$j++];
         for ($i = 1; $i <= self::NUMANS; $i++) {
-            $this->possibleAnswers["key".(string)$i] = $allQuestions[$j++];
+            $this->possibleAnswers["key".(string)$i] = $questionData[$j++];
         }
-        $this->correctAnswer = $allQuestions[$j++];
-        $this->points = $allQuestions[$j++];
-        $this->image = $allQuestions[$j++];
+        $this->correctAnswer = trim("key".(string)$questionData[$j++]);
+        $this->points = (float)$questionData[$j++];
+        $this->image = $questionData[$j++];
     }
 
     public function get()
@@ -70,13 +70,12 @@ class Question
 
     public function evaluate()
     {
-        $points = 0;
-
+        $score = 0;
         if ($this->userAnswer == $this->correctAnswer) {
-            $points = $this->points;
+            $score = $this->points;
         }
 
-        return $points;
+        return $score;
     }
 
     public function weight()

@@ -360,6 +360,18 @@ input[type=radio]:checked + label
   font-size: 0.7em;
 }
 
+/* Results subsection */
+
+.results
+{
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: italic;
+  text-align: center;
+  font-size: 1.6em;
+}
+
 @media (max-width: 899px)
 {
     .question

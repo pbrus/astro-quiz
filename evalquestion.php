@@ -11,8 +11,16 @@ if (!isset($_POST['answer'])) {
     Session::updateVar('unselectedAnswer', True);
 } else {
     Session::updateVar('unselectedAnswer', False);
+    $allQuestions = Session::getVar('allQuestions');
     $currentQuestionIndex = Session::getVar('currentQuestionIndex');
-    $currentQuestionIndex += 1;
-    Session::updateVar('currentQuestionIndex', $currentQuestionIndex);
+    $allQuestions[$currentQuestionIndex]->saveUserAnswer($_POST['answer']);
+    $allQuestions = Session::updateVar('allQuestions', $allQuestions);
+
+    if (($currentQuestionIndex + 1) == Session::getVar('amountQuestions')) {
+        header('Location: finish.php');
+        exit;
+    } else {
+        Session::updateVar('currentQuestionIndex', $currentQuestionIndex + 1);
+    }
 }
 header('Location: question.php');

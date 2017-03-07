@@ -31,11 +31,7 @@
                 <p>
                     {{ allQuestions[currentQuestionIndex].get }}
                 </p>
-                {% if amountQuestions != currentQuestionIndex + 1 %}
-                    <form method="POST" action="evalquestion.php" class="answers-form">
-                {% else %}
-                    <form method="POST" action="finish.php" class="answers-form">
-                {% endif %}
+                <form method="POST" action="evalquestion.php" class="answers-form">
                     {% for i, val in allQuestions[currentQuestionIndex].getRandAnswers %}
                         {% set id = "radio" ~ i|last %}
                         <p>
