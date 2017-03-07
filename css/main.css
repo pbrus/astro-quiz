@@ -231,6 +231,7 @@ header > h1
 {
   display: flex;
   padding-bottom: 30px;
+  font-size: 1.0em;
 }
 
 .nick
@@ -315,8 +316,8 @@ input[type=radio]:checked + label
   cursor: pointer;
   background-color: #1367ef;
   display: inline-block;
-  padding: 1.5% 2.5% 1.5% 1.5%;
-  font-size: 0.7em;
+  padding: 14px 20px 14px 16px;
+  font-size: 21px;
   letter-spacing: 2px;
   font-weight: bold;
   font-style: normal;
@@ -343,8 +344,8 @@ input[type=radio]:checked + label
 .next-question-deactivate
 {
   opacity: 0.2;
-  background-color: #808080;
   cursor: default;
+  background-color: #808080;
 }
 
 #next-question
@@ -364,6 +365,7 @@ input[type=radio]:checked + label
     .question
     {
         font-size: 0.8em;
+        width: 90%;
     }
 }
 
@@ -404,7 +406,7 @@ input[type=radio]:checked + label
   {
     font-size: 0.5em;
     display: block;
-    height: 171px;
+    height: 170px;
     padding: 0;
   }
 
@@ -412,7 +414,6 @@ input[type=radio]:checked + label
   {
     border-right: none;
     padding: 20px 0;
-    margin-bottom: 10px;
   }
 
   .foot-decoration
@@ -425,28 +426,64 @@ input[type=radio]:checked + label
     height: 80px;
   }
 
+  .info-panel
+  {
+    font-size: 0.8em;
+  }
+
   .question
   {
-    font-size: 0.6em;
+    width: 96%;
+  }
+
+  .question > p
+  {
+    margin-bottom: 25px;
+    font-size: 1.1em;
+  }
+
+  .answers-form > p
+  {
+    margin: 0 4% 12px 4%;
+  }
+
+  .answers-form > p:nth-last-child(2)
+  {
+    margin-bottom: 40px;
   }
 }
 
 @media (max-width: 499px)
 {
-    .question
-    {
-        font-size: 0.5em;
-    }
+  .info-panel
+  {
+    flex-direction: column;
+  }
 
-    .next-question
-    {
-      border-radius: 7px;
-    }
+  .nick
+  {
+    flex-basis: 100%;
+    padding-right: 0;
+    text-align: center;
+    padding-bottom: 10px;
+  }
 
-    .next-question
-    {
-      padding: 5px 8px 5px 5px;
-    }
+  .nick > h2
+  {
+    font-size: 1.6em;
+  }
+
+  .counter-question
+  {
+    flex-basis: 100%;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .next-question-p
+  {
+    text-align: center;
+  }
 }
 
 @media (max-width: 349px)
@@ -454,6 +491,7 @@ input[type=radio]:checked + label
   header
   {
     font-size: 1.5em;
+    padding-bottom: 8%;
   }
 
   .user-input > p
@@ -463,12 +501,12 @@ input[type=radio]:checked + label
 
   .wrapper
   {
-    min-height: calc(100vh - 70px);
+    min-height: calc(100vh - 80px);
   }
 
   .footer
   {
-    height: 70px;
+    height: 80px;
   }
 
   .foot-decoration
@@ -489,10 +527,5 @@ input[type=radio]:checked + label
     display: inline-block;
     max-width: 260px;
     padding: 0;
-  }
-
-  .question
-  {
-      font-size: 0.45em;
   }
 }
