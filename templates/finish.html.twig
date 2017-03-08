@@ -2,13 +2,101 @@
 <html lang="en">
 <head>
     {{ block('head', "index.html.twig") }}
+    <link rel="stylesheet" href="css/circle.css">
 </head>
 <body>
     <div class="wrapper">
     {{ block('header', "index.html.twig") }}
         <main class="results">
+            <div class="nick-results">{{ user.name }}</div>
+            <div class="points-results">
+                <div class="points-label">
+                    Your score<br>{{ score }}/{{ maxScore }}
+                </div>
+                <div class="points-diagram">
+                    <div class="c100 p{{ perScore }}" id="diagram-per-score">
+                      <span id="text-per-score">{{ perScore }}%</span>
+                      <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="questions-results">
+                <div class="questions-label">
+                    Correct answers<br>{{ numberCorrectQuestions }}/{{ amountQuestions }}
+                </div>
+                <div class="questions-diagram">
+                    <div class="c100 p{{ perQuestions }}" id="diagram-per-questions">
+                      <span id="text-per-questions">{{ perQuestions }}%</span>
+                      <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="restart-quiz">
+                <a href="index.php" class="restart-quiz-button">
+                    Start Quiz again
+                </a>
+            </div>
         </main>
     </div>
     {{ block('footer', "index.html.twig") }}
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            $("#diagram-per-score").removeClass("p{{ perScore }}");
+            $("#diagram-per-score").addClass("slice");
+            $("#diagram-per-questions").removeClass("p{{ perQuestions }}");
+            $("#diagram-per-questions").addClass("slice");
+            $("#text-per-score").text("0%");
+            $("#text-per-questions").text("0%");
+
+            function displayPercentageScore(per){
+                $("#diagram-per-score").addClass("p" + per);
+                $("#text-per-score").text(per + "%");
+            }
+
+            function displayPercentageQuestions(per){
+                $("#diagram-per-questions").addClass("p" + per);
+                $("#text-per-questions").text(per + "%");
+            }
+
+            function timeStep(percentage){
+                var timeDuration = 2000;
+                return parseInt(timeDuration / percentage);
+            }
+
+            var stepForScore = timeStep({{ perScore }});
+            var stepForQuestions = timeStep({{ perQuestions }});
+            var percentageScore = 0;
+            var percentageQuestions = 0;
+
+            function animateScore(){
+                displayPercentageScore(percentageScore++);
+
+                if (percentageScore <= {{ perScore }}){
+                    setTimeout(animateScore, stepForScore);
+                }
+            }
+
+            function animateQuestions(){
+                displayPercentageQuestions(percentageQuestions++);
+
+                if (percentageQuestions <= {{ perQuestions }}){
+                    setTimeout(animateQuestions, stepForQuestions);
+                }
+            }
+
+            var delay = 1000;
+            setTimeout(animateScore, delay);
+            setTimeout(animateQuestions, delay);
+        });
+
+    </script>
 </body>
 </html>
