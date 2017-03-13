@@ -8,9 +8,9 @@ class File
     private $filePointer;
     protected $error;
 
-    public function __construct($str)
+    public function __construct($name)
     {
-        $this->fileName = $str;
+        $this->fileName = $name;
         $this->readable();
     }
 
@@ -18,7 +18,7 @@ class File
     {
         if (!file_exists($this->fileName)) {
             throw new NoFileException("Cannot find " . $this->fileName . " file");
-        } else if (!$this->filePointer = @fopen($this->fileName, 'r')) {
+        } else if (!$this->filePointer = @fopen($this->fileName, 'rw')) {
             throw new NoFileAccessException("Cannot read " . $this->fileName . " file");
         }
     }
@@ -49,12 +49,14 @@ class File
     {
         $lines = 0;
         $fd = $this->descriptor();
+        flock($fd, LOCK_SH);
 
         while (fgets($fd)) {
             $lines++;
         }
 
         rewind($fd);
+        flock($fd, LOCK_UN);
 
         return $lines;
     }

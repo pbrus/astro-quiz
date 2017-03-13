@@ -12,5 +12,6 @@ echo $twig->render('question.html.twig', array(
     'amountQuestions' => Session::getVar('amountQuestions'),
     'allQuestions' => Session::getVar('allQuestions'),
     'currentQuestionIndex' => Session::getVar('currentQuestionIndex'),
-    'unselectedAnswer' => Session::getVar('unselectedAnswer')
+    'unselectedAnswer' => Session::getVar('unselectedAnswer'),
+    'imageWidth' => Session::getVar('imageWidth')
 ));

@@ -1,6 +1,7 @@
 <?php
 
 use Brus\Session;
+use AstroQuiz\ConfigureFile;
 use AstroQuiz\QuestionFile;
 use AstroQuiz\Question;
 require_once __DIR__.'/vendor/autoload.php';
@@ -13,7 +14,12 @@ $loadDataStatus = True;
 $loadDataError = "None";
 
 try {
-    $questionFile = new QuestionFile("files/questions.txt");
+    $configureFile = new ConfigureFile("astroquiz.cfg");
+    $fileWithQuestions = $configureFile->getFilenameWithQuestions();
+    $questionFile = new QuestionFile("files/" . $fileWithQuestions);
+} catch (AstroQuiz\WrongConfiguration $err) {
+    $loadDataStatus = False;
+    $loadDataError = $err->getMessage();
 } catch (Brus\NoFileException $err) {
     $loadDataStatus = False;
     $loadDataError = $err->getMessage();
@@ -45,7 +51,8 @@ if (!$questionFile->properSize()) {
     Session::addVar(array(
         'amountQuestions' => $amountQuestions,
         'allQuestions' => $allQuestions,
-        'currentQuestionIndex' => $currentQuestionIndex
+        'currentQuestionIndex' => $currentQuestionIndex,
+        'imageWidth' => $configureFile->getImagesWidth()
     ));
 }
 

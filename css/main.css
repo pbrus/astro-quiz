@@ -262,6 +262,17 @@ header > h1
   line-height: 1.8em;
 }
 
+.image
+{
+  margin-bottom: 50px;
+}
+
+.image > img
+{
+  display: block;
+  margin: auto;
+}
+
 .question
 {
   width: 80%;

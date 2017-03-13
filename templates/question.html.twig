@@ -27,6 +27,11 @@
                     Question {{ currentQuestionIndex + 1 }}/{{ amountQuestions }}
                 </div>
             </div>
+            {% if allQuestions[currentQuestionIndex].image != "none" %}
+                <div class="image">
+                    <img src="../files/{{ allQuestions[currentQuestionIndex].image }}" width="{{ imageWidth }}" alt="">
+                </div>
+            {% endif %}
             <div class="question">
                 <p>
                     {{ allQuestions[currentQuestionIndex].get }}

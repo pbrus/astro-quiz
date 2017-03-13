@@ -39,10 +39,14 @@ class QuestionFile extends File
     public function readQuestion()
     {
         $question = array();
+        $fd = $this->descriptor();
+        flock($fd, LOCK_SH);
 
         for ($i = 0; $i < self::LINESPERQUESTION; $i++) {
-            $question[$i] = fgets($this->descriptor());
+            $question[$i] = fgets($fd);
         }
+
+        flock($fd, LOCK_UN);
 
         return $question;
     }

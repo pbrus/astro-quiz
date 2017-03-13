@@ -21,7 +21,7 @@ class Question
         }
         $this->correctAnswer = trim("key".(string)$questionData[$j++]);
         $this->points = (float)$questionData[$j++];
-        $this->image = $questionData[$j++];
+        $this->image = trim($questionData[$j++]);
     }
 
     public function get()
