@@ -3,6 +3,7 @@
 use Brus\Session;
 use AstroQuiz\ConfigureFile;
 use AstroQuiz\QuestionFile;
+use AstroQuiz\DatabaseFile;
 use AstroQuiz\Question;
 require_once __DIR__.'/vendor/autoload.php';
 Session::start();
@@ -17,6 +18,7 @@ try {
     $configureFile = new ConfigureFile("astroquiz.cfg");
     $fileWithQuestions = $configureFile->getFilenameWithQuestions();
     $questionFile = new QuestionFile("files/" . $fileWithQuestions);
+    $databaseFile = new DatabaseFile("database/database");
 } catch (AstroQuiz\WrongConfiguration $err) {
     $loadDataStatus = False;
     $loadDataError = $err->getMessage();

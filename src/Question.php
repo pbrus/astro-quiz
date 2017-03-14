@@ -57,7 +57,9 @@ class Question
     {
         while (True) {
             $number = rand(1, self::NUMANS);
-            if (!in_array($number, $permutationIndices)) break;
+            if (!in_array($number, $permutationIndices)) {
+                break;
+            }
         }
 
         return $number;

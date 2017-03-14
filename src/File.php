@@ -48,15 +48,15 @@ class File
     public function size()
     {
         $lines = 0;
-        $fd = $this->descriptor();
-        flock($fd, LOCK_SH);
+        $fileDescriptor = $this->descriptor();
+        flock($fileDescriptor, LOCK_SH);
 
-        while (fgets($fd)) {
+        while (fgets($fileDescriptor)) {
             $lines++;
         }
 
-        rewind($fd);
-        flock($fd, LOCK_UN);
+        rewind($fileDescriptor);
+        flock($fileDescriptor, LOCK_UN);
 
         return $lines;
     }

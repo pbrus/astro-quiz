@@ -40,12 +40,12 @@ class ConfigureFile extends File
 
     private function loadConfigureParameters()
     {
-        $fd = $this->descriptor();
+        $fileDescriptor = $this->descriptor();
         $size = $this->size();
-        flock($fd, LOCK_SH);
+        flock($fileDescriptor, LOCK_SH);
 
         while ($size--) {
-            $line = fgets($fd);
+            $line = fgets($fileDescriptor);
             foreach ($this->parameters as $key => $value) {
                 $modkey = $key . ":";
                 $regex = "/^" . $modkey . "/";
@@ -55,9 +55,13 @@ class ConfigureFile extends File
             }
         }
 
-        rewind($fd);
-        flock($fd, LOCK_UN);
+        rewind($fileDescriptor);
+        flock($fileDescriptor, LOCK_UN);
+        $this->validLoadingConfigureParameters();
+    }
 
+    private function validLoadingConfigureParameters()
+    {
         foreach ($this->parameters as $key => $value) {
             if (!isset($value) || $value == "") {
                 throw new WrongConfiguration("Incorrect structure in " . $this->name() . " file");
