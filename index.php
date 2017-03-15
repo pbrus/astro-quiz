@@ -54,7 +54,8 @@ if (!$questionFile->properSize()) {
         'amountQuestions' => $amountQuestions,
         'allQuestions' => $allQuestions,
         'currentQuestionIndex' => $currentQuestionIndex,
-        'imageWidth' => $configureFile->getImagesWidth()
+        'imageWidth' => $configureFile->getImagesWidth(),
+        'databaseFile' => $databaseFile
     ));
 }
 

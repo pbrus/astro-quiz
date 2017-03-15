@@ -7,6 +7,7 @@ Session::start();
 $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
 $twig = new Twig_Environment($loader);
 
+$user = Session::getVar('user');
 $allQuestions = Session::getVar('allQuestions');
 $amountQuestions = Session::getVar('amountQuestions');
 $score = 0;
@@ -25,7 +26,7 @@ $perScore = (int)(100 * $score / $maxScore);
 $perQuestions = (int)(100 * $numberCorrectQuestions / $amountQuestions);
 
 echo $twig->render('finish.html.twig', array(
-        'user' => Session::getVar('user'),
+        'user' => $user,
         'score' => $score,
         'maxScore' => $maxScore,
         'perScore' => $perScore,
@@ -34,4 +35,8 @@ echo $twig->render('finish.html.twig', array(
         'perQuestions' => $perQuestions
 ));
 
-Session::stop();
+use AstroQuiz\DatabaseFile;
+$databaseFile = new DatabaseFile("database/database");
+$databaseFile->saveUserData($user, $allQuestions);
+
+//Session::stop();

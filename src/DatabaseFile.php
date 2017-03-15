@@ -5,13 +5,32 @@ use Brus\File;
 
 class DatabaseFile extends File
 {
-    private const SEPARATOR = "|";
+    private const SEPARATOR = ":";
+    private $rowInputDatabase = array();
+    private $rowOutputDatabase = array();
 
-    public function saveUserData()
+    public function saveUserData($user, $allQuestions)
     {
-        $fileDescriptor = $this->descriptor($user, $allQuestions);
-        flock($fileDescriptor, LOCK_EX);
+        $amountQuestions = count($allQuestions);
+        $score = 0;
 
+        $elementsForInputRow[0] = $user->name();
+        for ($i = 0; $i < $amountQuestions; $i++) {
+            $points = $allQuestions[$i]->evaluate();
+            $elementsForInputRow[$i + 1] = $points;
+            $score += $points;
+        }
+        array_push($elementsForInputRow, $score);
+
+        $this->rowInputDatabase = implode(self::SEPARATOR, $elementsForInputRow);
+        $this->saveDataToFile();
+    }
+
+    private function saveDataToFile()
+    {
+        $fileDescriptor = $this->descriptor();
+        flock($fileDescriptor, LOCK_EX);
+        file_put_contents($this->name(), "$this->rowInputDatabase\n", FILE_APPEND);
         flock($fileDescriptor, LOCK_UN);
     }
 }

@@ -18,7 +18,7 @@ class File
     {
         if (!file_exists($this->fileName)) {
             throw new NoFileException("Cannot find " . $this->fileName . " file");
-        } else if (!$this->filePointer = @fopen($this->fileName, 'rw')) {
+        } else if (!$this->filePointer = @fopen($this->fileName, 'r')) {
             throw new NoFileAccessException("Cannot read " . $this->fileName . " file");
         }
     }
