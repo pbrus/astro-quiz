@@ -8,17 +8,17 @@ class File
     private $filePointer;
     protected $error;
 
-    public function __construct($name)
+    public function __construct($name, $mode = "r")
     {
         $this->fileName = $name;
-        $this->readable();
+        $this->readable($mode);
     }
 
-    private function readable()
+    private function readable($mode)
     {
-        if (!file_exists($this->fileName)) {
+        if (file_exists($this->fileName) === FALSE) {
             throw new NoFileException("Cannot find " . $this->fileName . " file");
-        } else if (!$this->filePointer = @fopen($this->fileName, 'r')) {
+        } else if (($this->filePointer = @fopen($this->fileName, $mode)) === FALSE) {
             throw new NoFileAccessException("Cannot read " . $this->fileName . " file");
         }
     }

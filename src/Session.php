@@ -24,7 +24,7 @@ class Session
 
     public static function start()
     {
-        if (!isset($_SESSION)) {
+        if (isset($_SESSION) === FALSE) {
             session_start();
         }
     }

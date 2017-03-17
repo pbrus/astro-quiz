@@ -18,7 +18,7 @@ try {
     $configureFile = new ConfigureFile("astroquiz.cfg");
     $fileWithQuestions = $configureFile->getFilenameWithQuestions();
     $questionFile = new QuestionFile("files/" . $fileWithQuestions);
-    $databaseFile = new DatabaseFile("database/database");
+    $databaseFile = new DatabaseFile("database/database", "r+");
 } catch (AstroQuiz\WrongConfiguration $err) {
     $loadDataStatus = False;
     $loadDataError = $err->getMessage();
@@ -54,8 +54,8 @@ if (!$questionFile->properSize()) {
         'amountQuestions' => $amountQuestions,
         'allQuestions' => $allQuestions,
         'currentQuestionIndex' => $currentQuestionIndex,
-        'imageWidth' => $configureFile->getImagesWidth(),
-        'databaseFile' => $databaseFile
+        'databaseFile' => $databaseFile,
+        'imageWidth' => $configureFile->getImagesWidth()
     ));
 }
 

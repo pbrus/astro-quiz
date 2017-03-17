@@ -13,7 +13,7 @@ class ConfigureFile extends File
 
     public function getPassword()
     {
-        if (!isset($this->parameters['password'])) {
+        if (isset($this->parameters['password']) === FALSE) {
             $this->loadConfigureParameters();
         }
 
@@ -22,7 +22,7 @@ class ConfigureFile extends File
 
     public function getFilenameWithQuestions()
     {
-        if (!isset($this->parameters['question-file'])) {
+        if (isset($this->parameters['question-file']) === FALSE) {
             $this->loadConfigureParameters();
         }
 
@@ -31,7 +31,7 @@ class ConfigureFile extends File
 
     public function getImagesWidth()
     {
-        if (!isset($this->parameters['width-image'])) {
+        if (isset($this->parameters['width-image']) === FALSE) {
             $this->loadConfigureParameters();
         }
 
@@ -63,7 +63,7 @@ class ConfigureFile extends File
     private function validLoadingConfigureParameters()
     {
         foreach ($this->parameters as $key => $value) {
-            if (!isset($value) || $value == "") {
+            if ((isset($value) === FALSE) || $value == "") {
                 throw new WrongConfiguration("Incorrect structure in " . $this->name() . " file");
             }
         }

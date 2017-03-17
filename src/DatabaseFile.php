@@ -30,7 +30,7 @@ class DatabaseFile extends File
     {
         $fileDescriptor = $this->descriptor();
         flock($fileDescriptor, LOCK_EX);
-        file_put_contents($this->name(), "$this->rowInputDatabase\n", FILE_APPEND);
+        fwrite($fileDescriptor, $this->rowInputDatabase . "\n");
         flock($fileDescriptor, LOCK_UN);
     }
 }

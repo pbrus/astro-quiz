@@ -1,11 +1,25 @@
 <?php
 
 use Brus\Session;
+use AstroQuiz\DatabaseFile;
 require_once __DIR__.'/vendor/autoload.php';
 Session::start();
 
 $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
 $twig = new Twig_Environment($loader);
+
+$accessDatabaseStatus = True;
+$accessDatabaseError = "None";
+
+try {
+    $databaseFile = new DatabaseFile("database/database", "a");
+} catch (Brus\NoFileException $err) {
+    $accessDatabaseStatus = False;
+    $accessDatabaseError = $err->getMessage();
+} catch (Brus\NoFileAccessException $err) {
+    $accessDatabaseStatus = False;
+    $accessDatabaseError = $err->getMessage();
+}
 
 $user = Session::getVar('user');
 $allQuestions = Session::getVar('allQuestions');
@@ -32,11 +46,11 @@ echo $twig->render('finish.html.twig', array(
         'perScore' => $perScore,
         'numberCorrectQuestions' => $numberCorrectQuestions,
         'amountQuestions' => $amountQuestions,
-        'perQuestions' => $perQuestions
+        'perQuestions' => $perQuestions,
+        'accessDatabaseStatus' => $accessDatabaseStatus,
+        'accessDatabaseError' => $accessDatabaseError
 ));
 
-use AstroQuiz\DatabaseFile;
-$databaseFile = new DatabaseFile("database/database");
 $databaseFile->saveUserData($user, $allQuestions);
 
-//Session::stop();
+Session::stop();
