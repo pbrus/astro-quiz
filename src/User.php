@@ -17,19 +17,19 @@ class User
 
     public function validName()
     {
-        $status = True;
+        $status = TRUE;
 
         if (empty($this->name)) {
-            $status = False;
+            $status = FALSE;
             $this->error = "Please, fill the form out";
         } else if (strlen($this->name) < self::MINLEN) {
-            $status = False;
+            $status = FALSE;
             $this->error = "The name must contain at least " . self::MINLEN . " letters";
         } else if (strlen($this->name) > self::MAXLEN) {
-            $status = False;
+            $status = FALSE;
             $this->error = "The name cannot contain more than " . self::MAXLEN . " letters";
         } else if (preg_match('/[^a-zA-Z\s_]/', $this->name)) {
-            $status = False;
+            $status = FALSE;
             $this->error = "Please, use only Latin letters, spaces or underscores";
         }
 

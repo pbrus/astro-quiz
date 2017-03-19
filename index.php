@@ -11,7 +11,7 @@ Session::start();
 $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
 $twig = new Twig_Environment($loader);
 
-$loadDataStatus = True;
+$loadDataStatus = TRUE;
 $loadDataError = "None";
 
 try {
@@ -20,17 +20,17 @@ try {
     $questionFile = new QuestionFile("files/" . $fileWithQuestions);
     $databaseFile = new DatabaseFile("database/database", "r+");
 } catch (AstroQuiz\WrongConfiguration $err) {
-    $loadDataStatus = False;
+    $loadDataStatus = FALSE;
     $loadDataError = $err->getMessage();
 } catch (Brus\NoFileException $err) {
-    $loadDataStatus = False;
+    $loadDataStatus = FALSE;
     $loadDataError = $err->getMessage();
 } catch (Brus\NoFileAccessException $err) {
-    $loadDataStatus = False;
+    $loadDataStatus = FALSE;
     $loadDataError = $err->getMessage();
 }
 
-if (!$loadDataStatus) {
+if ($loadDataStatus === FALSE) {
     echo $twig->render('index.html.twig', array(
         'loadDataStatus' => $loadDataStatus,
         'loadDataError' => $loadDataError
@@ -39,7 +39,7 @@ if (!$loadDataStatus) {
 }
 
 if (!$questionFile->properSize()) {
-    $loadDataStatus = False;
+    $loadDataStatus = FALSE;
     $loadDataError = $questionFile->error();
 } else {
     $amountQuestions = $questionFile->amountQuestions();

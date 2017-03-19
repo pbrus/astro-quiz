@@ -38,9 +38,15 @@
                 </div>
             </div>
             <div class="restart-quiz">
-                <a href="index.php" class="restart-quiz-button">
-                    Start Quiz again
-                </a>
+                {% if accessDatabaseStatus %}
+                    <a href="index.php" class="restart-quiz-button">
+                        Start Quiz again
+                    </a>
+                {% else %}
+                    <p>
+                        <span>Error</span><br>{{ accessDatabaseError }}
+                    </p>
+                {% endif %}
             </div>
         </main>
     </div>

@@ -4,25 +4,34 @@ use Brus\Session;
 use AstroQuiz\DatabaseFile;
 require_once __DIR__.'/vendor/autoload.php';
 Session::start();
+$user = @Session::getVar('user');
+if (isset($user) === FALSE) {
+    header('Location: index.php');
+    exit;
+}
 
 $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
 $twig = new Twig_Environment($loader);
 
-$accessDatabaseStatus = True;
+$accessDatabaseStatus = TRUE;
 $accessDatabaseError = "None";
+
+$allQuestions = Session::getVar('allQuestions');
 
 try {
     $databaseFile = new DatabaseFile("database/database", "a");
+    $databaseFile->saveUserData($user, $allQuestions);
+} catch (AstroQuiz\FailureDataSavingException $err) {
+    $accessDatabaseStatus = FALSE;
+    $accessDatabaseError = $err->getMessage();
 } catch (Brus\NoFileException $err) {
-    $accessDatabaseStatus = False;
+    $accessDatabaseStatus = FALSE;
     $accessDatabaseError = $err->getMessage();
 } catch (Brus\NoFileAccessException $err) {
-    $accessDatabaseStatus = False;
+    $accessDatabaseStatus = FALSE;
     $accessDatabaseError = $err->getMessage();
 }
 
-$user = Session::getVar('user');
-$allQuestions = Session::getVar('allQuestions');
 $amountQuestions = Session::getVar('amountQuestions');
 $score = 0;
 $numberCorrectQuestions = 0;
@@ -50,7 +59,5 @@ echo $twig->render('finish.html.twig', array(
         'accessDatabaseStatus' => $accessDatabaseStatus,
         'accessDatabaseError' => $accessDatabaseError
 ));
-
-$databaseFile->saveUserData($user, $allQuestions);
 
 Session::stop();

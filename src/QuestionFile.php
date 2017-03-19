@@ -10,11 +10,11 @@ class QuestionFile extends File
 
     public function properSize()
     {
-        $status = True;
+        $status = TRUE;
         $howManyLines = $this->size();
 
         if ($howManyLines % self::LINESPERQUESTION) {
-            $status = False;
+            $status = FALSE;
             $this->error = "Wrong structure in " . $this->name() . " file";
         } else if ($this->amountQuestions == -1) {
             $this->amountQuestions = $howManyLines / self::LINESPERQUESTION;

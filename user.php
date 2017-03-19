@@ -13,14 +13,14 @@ $user = new User($_POST['name']);
 if (!$user->validName()) {      // add method checking is a name is duplicated
     $validFormError = $user->error();
     echo $twig->render('index.html.twig', array(
-        'loadDataStatus' => True,
-        'validFormStatus' => True,
+        'loadDataStatus' => TRUE,
+        'validFormStatus' => TRUE,
         'validFormError' => $validFormError
     ));
 } else {
     Session::addVar(array(
         'user' => $user,
-        'unselectedAnswer' => False
+        'unselectedAnswer' => FALSE
     ));
     header('Location: question.php');
 }

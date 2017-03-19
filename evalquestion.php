@@ -8,9 +8,9 @@ $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
 $twig = new Twig_Environment($loader);
 
 if (!isset($_POST['answer'])) {
-    Session::updateVar('unselectedAnswer', True);
+    Session::updateVar('unselectedAnswer', TRUE);
 } else {
-    Session::updateVar('unselectedAnswer', False);
+    Session::updateVar('unselectedAnswer', FALSE);
     $allQuestions = Session::getVar('allQuestions');
     $currentQuestionIndex = Session::getVar('currentQuestionIndex');
     $allQuestions[$currentQuestionIndex]->saveUserAnswer($_POST['answer']);

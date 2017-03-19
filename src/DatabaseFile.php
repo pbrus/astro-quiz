@@ -30,7 +30,13 @@ class DatabaseFile extends File
     {
         $fileDescriptor = $this->descriptor();
         flock($fileDescriptor, LOCK_EX);
-        fwrite($fileDescriptor, $this->rowInputDatabase . "\n");
+        if (@fwrite($fileDescriptor, $this->rowInputDatabase . "\n") === FALSE) {
+            throw new FailureDataSavingException("Cannot save data to " . $this->name() . " file");
+        }
         flock($fileDescriptor, LOCK_UN);
     }
+}
+
+class FailureDataSavingException extends \Exception
+{
 }

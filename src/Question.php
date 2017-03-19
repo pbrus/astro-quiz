@@ -55,7 +55,7 @@ class Question
 
     private function randExclusion($permutationIndices)
     {
-        while (True) {
+        while (TRUE) {
             $number = rand(1, self::NUMANS);
             if (!in_array($number, $permutationIndices)) {
                 break;

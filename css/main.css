@@ -141,7 +141,8 @@ header > h1
   color: #1367ef;
 }
 
-.user-form p
+.user-form p,
+.restart-quiz p
 {
   color: red;
   font-style: italic;
@@ -155,7 +156,8 @@ header > h1
   font-style: italic;
 }
 
-.user-input > p > span
+.user-input > p > span,
+.restart-quiz > p > span
 {
   font-weight: bold;
   letter-spacing: 3px;
