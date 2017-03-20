@@ -35,6 +35,29 @@ class DatabaseFile extends File
         }
         flock($fileDescriptor, LOCK_UN);
     }
+
+    public function isNameDuplicated($userName)
+    {
+        $isNameDuplicatedStatus = FALSE;
+        $fileDescriptor = $this->descriptor();
+        $size = $this->size();
+        flock($fileDescriptor, LOCK_SH);
+
+        while ($size--) {
+            $line = explode(self::SEPARATOR, fgets($fileDescriptor));
+            $currentName = $line[0];
+            if ($currentName == $userName) {
+                $isNameDuplicatedStatus = TRUE;
+                $this->error = $currentName . " is already busy";
+                break;
+            }
+        }
+
+        rewind($fileDescriptor);
+        flock($fileDescriptor, LOCK_UN);
+
+        return $isNameDuplicatedStatus;
+    }
 }
 
 class FailureDataSavingException extends \Exception
