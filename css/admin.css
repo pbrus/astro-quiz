@@ -1,0 +1,23 @@
+.admin-panel-content
+{
+  margin: 20px auto;
+  text-align: center;
+  font-size: 1.3em;
+}
+
+.admin-panel-error
+{
+  color: red;
+  font-style: italic;
+}
+
+.user-form
+{
+  margin: auto;
+}
+
+.password-error
+{
+  margin-top: 15px;
+  font-size: 0.5em;
+}

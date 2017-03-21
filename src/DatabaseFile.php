@@ -48,7 +48,7 @@ class DatabaseFile extends File
             $currentName = $line[0];
             if ($currentName == $userName) {
                 $isNameDuplicatedStatus = TRUE;
-                $this->error = $currentName . " is already busy";
+                $this->error = "Name " . $currentName . " is already busy";
                 break;
             }
         }

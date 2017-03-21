@@ -11,8 +11,8 @@ Session::start();
 $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
 $twig = new Twig_Environment($loader);
 
-$loadDataStatus = TRUE;
-$loadDataError = "None";
+$loadDataCorrectly = TRUE;
+$loadDataError = NULL;
 
 try {
     $configureFile = new ConfigureFile("astroquiz.cfg");
@@ -20,26 +20,24 @@ try {
     $questionFile = new QuestionFile("files/" . $fileWithQuestions);
     $databaseFile = new DatabaseFile("database/database", "r+");
 } catch (AstroQuiz\WrongConfiguration $err) {
-    $loadDataStatus = FALSE;
+    $loadDataCorrectly = FALSE;
     $loadDataError = $err->getMessage();
 } catch (Brus\NoFileException $err) {
-    $loadDataStatus = FALSE;
+    $loadDataCorrectly = FALSE;
     $loadDataError = $err->getMessage();
 } catch (Brus\NoFileAccessException $err) {
-    $loadDataStatus = FALSE;
+    $loadDataCorrectly = FALSE;
     $loadDataError = $err->getMessage();
 }
 
-if ($loadDataStatus === FALSE) {
+if ($loadDataCorrectly === FALSE) {
     echo $twig->render('index.html.twig', array(
-        'loadDataStatus' => $loadDataStatus,
         'loadDataError' => $loadDataError
     ));
     exit;
 }
 
-if (!$questionFile->properSize()) {
-    $loadDataStatus = FALSE;
+if ($questionFile->properSize() === FALSE) {
     $loadDataError = $questionFile->error();
 } else {
     $amountQuestions = $questionFile->amountQuestions();
@@ -54,12 +52,10 @@ if (!$questionFile->properSize()) {
         'amountQuestions' => $amountQuestions,
         'allQuestions' => $allQuestions,
         'currentQuestionIndex' => $currentQuestionIndex,
-        'databaseFile' => $databaseFile,
         'imageWidth' => $configureFile->getImagesWidth()
     ));
 }
 
 echo $twig->render('index.html.twig', array(
-        'loadDataStatus' => $loadDataStatus,
         'loadDataError' => $loadDataError
 ));

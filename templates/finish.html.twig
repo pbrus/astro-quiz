@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="restart-quiz">
-                {% if accessDatabaseStatus %}
+                {% if accessDatabaseError is empty %}
                     <a href="index.php" class="restart-quiz-button">
                         Start Quiz again
                     </a>

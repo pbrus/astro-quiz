@@ -108,7 +108,8 @@ header > h1
   box-sizing: border-box;
 }
 
-.user-form input[type=text]
+.user-form input[type=text],
+.user-form input[type=password]
 {
   background-color: #e6e6e6;
   border: 3px solid #1367ef;
@@ -130,12 +131,14 @@ header > h1
 }
 
 .user-form input[type=text]:focus,
+.user-form input[type=password]:focus,
 .user-form input[type=submit]:focus
 {
   box-shadow: 0px 0px 10px 2px rgba(19,103,239,0.7);
 }
 
-.user-form input[type=text]:focus
+.user-form input[type=text]:focus,
+.user-form input[type=password]:focus
 {
   background-color: #e7f0fd;
   color: #1367ef;

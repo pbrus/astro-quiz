@@ -6,9 +6,9 @@ use Brus\File;
 class ConfigureFile extends File
 {
     private $parameters = array(
-        'password' => null,
-        'question-file' => null,
-        'width-image' => null
+        'password' => NULL,
+        'question-file' => NULL,
+        'width-image' => NULL
     );
 
     public function getPassword()

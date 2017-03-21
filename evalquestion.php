@@ -7,7 +7,7 @@ Session::start();
 $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
 $twig = new Twig_Environment($loader);
 
-if (!isset($_POST['answer'])) {
+if (isset($_POST['answer']) === FALSE) {
     Session::updateVar('unselectedAnswer', TRUE);
 } else {
     Session::updateVar('unselectedAnswer', FALSE);

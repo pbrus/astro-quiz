@@ -13,22 +13,17 @@ if (isset($user) === FALSE) {
 $loader = new Twig_Loader_Filesystem(__DIR__.'/templates');
 $twig = new Twig_Environment($loader);
 
-$accessDatabaseStatus = TRUE;
-$accessDatabaseError = "None";
-
+$accessDatabaseError = NULL;
 $allQuestions = Session::getVar('allQuestions');
 
 try {
     $databaseFile = new DatabaseFile("database/database", "a");
     $databaseFile->saveUserData($user, $allQuestions);
 } catch (AstroQuiz\FailureDataSavingException $err) {
-    $accessDatabaseStatus = FALSE;
     $accessDatabaseError = $err->getMessage();
 } catch (Brus\NoFileException $err) {
-    $accessDatabaseStatus = FALSE;
     $accessDatabaseError = $err->getMessage();
 } catch (Brus\NoFileAccessException $err) {
-    $accessDatabaseStatus = FALSE;
     $accessDatabaseError = $err->getMessage();
 }
 
@@ -56,7 +51,6 @@ echo $twig->render('finish.html.twig', array(
         'numberCorrectQuestions' => $numberCorrectQuestions,
         'amountQuestions' => $amountQuestions,
         'perQuestions' => $perQuestions,
-        'accessDatabaseStatus' => $accessDatabaseStatus,
         'accessDatabaseError' => $accessDatabaseError
 ));
 

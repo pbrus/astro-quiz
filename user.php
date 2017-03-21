@@ -26,7 +26,5 @@ if ($user->validName() === FALSE) {
 }
 
 echo $twig->render('index.html.twig', array(
-    'loadDataStatus' => TRUE,
-    'validFormStatus' => TRUE,
     'validFormError' => $validFormError
 ));
