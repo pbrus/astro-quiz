@@ -25,6 +25,8 @@ try {
     $loadDataError = $err->getMessage();
 }
 
+$database = $databaseFile->getDatabaseSortedByResults("DESC");
+
 if (isset($password) && ($password != $formPassword)) {
     $displayLoginForm = TRUE;
     $typeAnotherPassword = TRUE;
@@ -34,5 +36,6 @@ if (isset($password) && ($password != $formPassword)) {
 echo $twig->render('admin.html.twig', array(
     'loadDataError' => $loadDataError,
     'displayLoginForm' => $displayLoginForm,
-    'typeAnotherPassword' => $typeAnotherPassword
+    'typeAnotherPassword' => $typeAnotherPassword,
+    'database' => $database
 ));

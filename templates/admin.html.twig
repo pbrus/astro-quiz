@@ -19,7 +19,12 @@
                     <p class="admin-panel-error password-error">Wrong password, try again</p>
                 {% endif %}
             {% else %}
-                DATA
+                {% for userData in database %}
+                    {% for element in userData %}
+                            {{ element }}
+                    {% endfor %}
+                    <br>
+                {% endfor %}
             {% endif %}
         </main>
     </div>
