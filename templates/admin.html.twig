@@ -19,12 +19,22 @@
                     <p class="admin-panel-error password-error">Wrong password, try again</p>
                 {% endif %}
             {% else %}
+            <table class="table-results">
+                <thead>
+                    <tr><th>User</th><th>Score</th></tr>
+                </thead>
+                <tbody>
                 {% for userData in database %}
-                    {% for element in userData %}
-                            {{ element }}
+                <tr>
+                    {% for key, element in userData %}
+                        {% if key == 0 or key == userData|length - 1 %}
+                            <td>{{ element }}</td>
+                        {% endif %}
                     {% endfor %}
-                    <br>
+                </tr>
                 {% endfor %}
+                </tbody>
+            </table>
             {% endif %}
         </main>
     </div>
