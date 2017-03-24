@@ -130,7 +130,7 @@ class DatabaseFile extends File
             });
         } else if ($mode == "DESC") {
             usort($sortedDatabase, function($firstElement, $secondElement) {
-                return $secondElement[$this->amountQuestions + 1] <=> $firstElement[$this->amountQuestions + 1];
+                return floatval($secondElement[$this->amountQuestions + 1]) <=> floatval($firstElement[$this->amountQuestions + 1]);
             });
         }
 
