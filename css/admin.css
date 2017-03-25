@@ -22,12 +22,40 @@
   font-size: 0.5em;
 }
 
-table {
+table
+{
+  font-size: 0.7em;
   border-collapse: collapse;
   margin: auto;
+  background: #262626;
 }
 
-td, th {
-  border: 2px solid lightblue;
+thead tr
+{
+  font-size: 1.3em;
+  font-style: italic;
+  font-weight: bold;
+  color: #31363b;
+  background-color: #4caf50;
+}
+
+tbody tr:nth-child(4n+1), tbody tr:nth-child(4n+2)
+{
+  background: #4d4d4d;
+}
+
+td, th
+{
+  border: 1px solid gray;
   padding: 1.0rem;
+}
+
+.wrong-answers
+{
+  text-align: left;
+}
+
+.hide-wrong-answers
+{
+  display: none;
 }

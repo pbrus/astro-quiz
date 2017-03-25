@@ -126,7 +126,7 @@ class DatabaseFile extends File
 
         if ($mode == "ASC") {
             usort($sortedDatabase, function($firstElement, $secondElement) {
-                return $firstElement[$this->amountQuestions + 1] <=> $secondElement[$this->amountQuestions + 1];
+                return floatval($firstElement[$this->amountQuestions + 1]) <=> floatval($secondElement[$this->amountQuestions + 1]);
             });
         } else if ($mode == "DESC") {
             usort($sortedDatabase, function($firstElement, $secondElement) {
