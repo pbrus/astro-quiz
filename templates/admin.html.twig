@@ -35,7 +35,15 @@
                 </tr>
                 <tr>
                     <td colspan="3" class="wrong-answers">
-                        Data
+                    <ol class="wrong-answers-list">
+                        {% for keyElement, element in userData %}
+                            {% if keyElement != 0 and keyElement != userData|length - 1 %}
+                                {% if element == 0 %}
+                                    <li>{{ allQuestions[keyElement - 1].get }}</li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </ol>
                     </td>
                 </tr>
                 {% endfor %}

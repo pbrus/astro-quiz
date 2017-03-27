@@ -22,9 +22,10 @@
   font-size: 0.5em;
 }
 
-table
+.table-results
 {
   font-size: 0.7em;
+  width: 650px;
   border-collapse: collapse;
   margin: auto;
   background: #262626;
@@ -53,6 +54,19 @@ td, th
 .wrong-answers
 {
   text-align: left;
+  font-size: 0.55em;
+}
+
+.wrong-answers:hover
+{
+  color: #000000;
+  background: tomato;
+}
+
+.wrong-answers-list
+{
+  list-style-type: decimal;
+  padding-left: 30px;
 }
 
 .hide-wrong-answers

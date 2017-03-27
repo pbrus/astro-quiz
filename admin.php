@@ -21,7 +21,6 @@ try {
     $loadDataError = $err->getMessage();
 }
 
-
 echo $twig->render('admin.html.twig', array(
     'loadDataError' => $loadDataError,
     'displayLoginForm' => TRUE,
