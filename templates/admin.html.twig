@@ -19,6 +19,13 @@
                     <p class="admin-panel-error password-error">Wrong password, try again</p>
                 {% endif %}
             {% else %}
+            <nav>
+                <ul class="ul-nav">
+                    <li>Top table</li>
+                    <li>Statistics</li>
+                    <li>Clean data</li>
+                </ul>
+            </nav>
             <table class="table-results">
                 <thead>
                     <tr><th>No</th><th>Username</th><th>Score</th></tr>
@@ -35,6 +42,7 @@
                 </tr>
                 <tr>
                     <td colspan="3" class="wrong-answers">
+                    Wrong answers to the questions:
                     <ol class="wrong-answers-list">
                         {% for keyElement, element in userData %}
                             {% if keyElement != 0 and keyElement != userData|length - 1 %}

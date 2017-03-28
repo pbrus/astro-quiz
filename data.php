@@ -29,24 +29,38 @@ try {
     $loadDataError = $err->getMessage();
 }
 
-if ($loadDataError == NULL) {
-    $database = $databaseFile->getDatabaseSortedByResults("DESC");
-}
-
 if (isset($password) && ($password != $formPassword)) {
+    $loadDataError = NULL;
     $displayLoginForm = TRUE;
     $typeAnotherPassword = TRUE;
-    $loadDataError = NULL;
+    echo $twig->render('admin.html.twig', array(
+        'loadDataError' => $loadDataError,
+        'displayLoginForm' => $displayLoginForm,
+        'typeAnotherPassword' => $typeAnotherPassword,
+    ));
+    exit;
 }
 
-if ($questionFile->properSize() === FALSE) {
-    $loadDataError = $questionFile->error();
-} else {
-    $amountQuestions = $questionFile->amountQuestions();
-    $allQuestions = array();
+if ($loadDataError == NULL) {
+    if ($questionFile->properSize() === FALSE) {
+        $loadDataError = $questionFile->error();
+    } else {
+        $database = $databaseFile->getDatabaseSortedByResults("DESC");
+        $amountQuestions = $questionFile->amountQuestions();
+        $allQuestions = array();
 
-    for ($i = 0; $i < $amountQuestions; $i++) {
-        $allQuestions[$i] = new Question($questionFile->readQuestion());
+        for ($i = 0; $i < $amountQuestions; $i++) {
+            $allQuestions[$i] = new Question($questionFile->readQuestion());
+        }
+
+        echo $twig->render('admin.html.twig', array(
+            'loadDataError' => $loadDataError,
+            'displayLoginForm' => $displayLoginForm,
+            'typeAnotherPassword' => $typeAnotherPassword,
+            'allQuestions' => $allQuestions,
+            'database' => $database
+        ));
+        exit;
     }
 }
 
@@ -54,6 +68,4 @@ echo $twig->render('admin.html.twig', array(
     'loadDataError' => $loadDataError,
     'displayLoginForm' => $displayLoginForm,
     'typeAnotherPassword' => $typeAnotherPassword,
-    'allQuestions' => $allQuestions,
-    'database' => $database
 ));

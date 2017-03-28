@@ -22,6 +22,19 @@
   font-size: 0.5em;
 }
 
+.ul-nav
+{
+  font-size: 0.4em;
+  padding: 5px;
+  color: #31363b;
+  font-weight: bold;
+  font-style: italic;
+  background: #4caf50;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
 .table-results
 {
   font-size: 0.7em;
@@ -65,6 +78,7 @@ td, th
 
 .wrong-answers-list
 {
+  margin-top: 15px;
   list-style-type: decimal;
   padding-left: 30px;
 }

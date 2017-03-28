@@ -30,7 +30,7 @@ class User
             $this->error = "The name cannot contain more than " . self::MAXLEN . " letters";
         } else if (preg_match('/[^a-zA-Z\s_-]/', $this->name)) {
             $isValidNameStatus = FALSE;
-            $this->error = "Please, use only Latin letters, spaces or underscores";
+            $this->error = "Please, use only Latin letters, spaces, underscores or dashes";
         }
 
         return $isValidNameStatus;
