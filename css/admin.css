@@ -24,18 +24,34 @@
 
 .ul-nav
 {
-  font-size: 0.4em;
-  padding: 5px;
-  color: #31363b;
+  font-size: 0.45em;
+  padding: 10px;
   font-weight: bold;
   font-style: italic;
-  background: #4caf50;
+  background: #1367ef;
   position: fixed;
   bottom: 20px;
   right: 20px;
+  border: 1px dashed #ffffff;
 }
 
-.table-results
+.ul-nav a
+{
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+.ul-nav a:visited
+{
+  color: #1a1a1a;
+}
+
+.ul-nav li:hover a
+{
+  color: #000000;
+}
+
+.table-results, .table-wrong-answers, .table-statistics
 {
   font-size: 0.7em;
   width: 650px;
@@ -49,11 +65,11 @@ thead tr
   font-size: 1.3em;
   font-style: italic;
   font-weight: bold;
-  color: #31363b;
-  background-color: #4caf50;
+  color: #1a1a1a;
+  background-color: #1367ef;
 }
 
-tbody tr:nth-child(4n+1), tbody tr:nth-child(4n+2)
+tbody tr:nth-child(2n)
 {
   background: #4d4d4d;
 }
@@ -62,6 +78,18 @@ td, th
 {
   border: 1px solid gray;
   padding: 1.0rem;
+}
+
+.table-wrong-answers, .table-statistics
+{
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.table-wrong-answers span
+{
+  font-weight: bold;
+  font-size: 1.3em;
 }
 
 .wrong-answers
@@ -86,4 +114,14 @@ td, th
 .hide-wrong-answers
 {
   display: none;
+}
+
+.statistics-row
+{
+  font-size: 0.7em;
+}
+
+.statistics-question
+{
+  text-align: left;
 }
