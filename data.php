@@ -46,11 +46,22 @@ if ($loadDataError == NULL) {
         $loadDataError = $questionFile->error();
     } else {
         $database = $databaseFile->getDatabaseSortedByResults("DESC");
+        $amountUsers = $databaseFile->amountUsers();
         $amountQuestions = $questionFile->amountQuestions();
         $allQuestions = array();
+        $percentCorrectAnswers = array();
 
         for ($i = 0; $i < $amountQuestions; $i++) {
             $allQuestions[$i] = new Question($questionFile->readQuestion());
+            $amountCorrectQuestions = 0;
+
+            foreach ($database as $row) {
+                if ($row[$i + 1] != 0) {
+                    $amountCorrectQuestions += 1;
+                }
+            }
+
+            $percentCorrectAnswers[$i] = 100*$amountCorrectQuestions/$amountUsers;
         }
 
         echo $twig->render('admin.html.twig', array(
@@ -58,7 +69,8 @@ if ($loadDataError == NULL) {
             'displayLoginForm' => $displayLoginForm,
             'typeAnotherPassword' => $typeAnotherPassword,
             'allQuestions' => $allQuestions,
-            'database' => $database
+            'database' => $database,
+            'percentCorrectAnswers' => $percentCorrectAnswers
         ));
         exit;
     }

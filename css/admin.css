@@ -74,6 +74,12 @@ tbody tr:nth-child(2n)
   background: #4d4d4d;
 }
 
+tbody tr:hover
+{
+  color: #000000;
+  background: tomato;
+}
+
 td, th
 {
   border: 1px solid gray;
@@ -96,12 +102,6 @@ td, th
 {
   text-align: left;
   font-size: 0.55em;
-}
-
-.wrong-answers:hover
-{
-  color: #000000;
-  background: tomato;
 }
 
 .wrong-answers-list
