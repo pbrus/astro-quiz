@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{ block('head', "index.html.twig") }}
+    <link href="css/admin.css" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+    {{ block('header', "index.html.twig") }}
+        <main class="admin-panel-content">
+            {% if loadDataError is not empty %}
+                <p class="admin-panel-error">{{ loadDataError }}</p>
+            {% elseif displayLoginForm %}
+                {{ block('cleanDatabaseWarning', "admin.html.twig") }}
+                <form method="post" action="clean.php" class="user-form">
+                    <input type="password" name="admin_password" placeholder="Admin password">
+                    <input type="submit" value="Clean">
+                </form>
+                <p class="admin-panel-error password-error">Wrong password, try again</p>
+            {% else %}
+                <p>Database is empty!</p>
+            {% endif %}
+        </main>
+    </div>
+    {{ block('footer', "index.html.twig") }}
+</body>
+</html>

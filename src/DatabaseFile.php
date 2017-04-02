@@ -136,8 +136,19 @@ class DatabaseFile extends File
 
         return $sortedDatabase;
     }
+
+    public function clean()
+    {
+        if (@file_put_contents($this->name(), "") === FALSE) {
+            throw new FailureCleanDataException("Cannot clean data in " . $this->name() . " file");
+        }
+    }
 }
 
 class FailureDataSavingException extends \Exception
+{
+}
+
+class FailureCleanDataException extends \Exception
 {
 }

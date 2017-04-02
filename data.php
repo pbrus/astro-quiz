@@ -29,6 +29,10 @@ try {
     $loadDataError = $err->getMessage();
 }
 
+if ($loadDataError == NULL && $databaseFile->isEmpty() === TRUE) {
+    $loadDataError = "Database is empty. Nothing to study";
+}
+
 if (isset($password) && ($password != $formPassword)) {
     $loadDataError = NULL;
     $displayLoginForm = TRUE;
@@ -36,7 +40,7 @@ if (isset($password) && ($password != $formPassword)) {
     echo $twig->render('admin.html.twig', array(
         'loadDataError' => $loadDataError,
         'displayLoginForm' => $displayLoginForm,
-        'typeAnotherPassword' => $typeAnotherPassword,
+        'typeAnotherPassword' => $typeAnotherPassword
     ));
     exit;
 }

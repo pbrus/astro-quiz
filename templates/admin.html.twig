@@ -24,7 +24,7 @@
                     <li><a href="#table-results">Results</a></li>
                     <li><a href="#table-wrong-answers">Bad answers</a></li>
                     <li><a href="#table-statistics">Statistics</a></li>
-                    <li><a href="#">Clean data</a></li>
+                    <li><a href="#clean-database">Clean data</a></li>
                 </ul>
             </nav>
             <table class="table-results" id="table-results">
@@ -85,6 +85,13 @@
                 {% endfor %}
                 </tbody>
             </table>
+            {% block cleanDatabaseWarning %}
+                <p class="clean-database" id="clean-database">Clean database<br>Not possible to undo!</p>
+            {% endblock %}
+            <form method="post" action="clean.php" class="user-form clean-form">
+                <input type="password" name="admin_password" placeholder="Admin password">
+                <input type="submit" value="Clean">
+            </form>
             {% endif %}
         </main>
     </div>

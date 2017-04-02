@@ -60,6 +60,17 @@ class File
 
         return $lines;
     }
+
+    public function isEmpty()
+    {
+        $status = FALSE;
+
+        if (filesize($this->fileName) == 0) {
+            $status = TRUE;
+        }
+
+        return $status;
+    }
 }
 
 class NoFileException extends \Exception
