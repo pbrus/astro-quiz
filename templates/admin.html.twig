@@ -5,8 +5,21 @@
     <link href="css/admin.css" rel="stylesheet">
 </head>
 <body>
-    <div class="wrapper">
-    {{ block('header', "index.html.twig") }}
+    <div class="wrapper" id="top">
+        <header>
+        <h1>Astro Quiz</h1>
+            {% if loadDataError is empty and not displayLoginForm %}
+                <nav>
+                    <ul id="navig" class="ul-nav">
+                        <li><a href="#top">Top</a></li>
+                        <li><a href="#table-results">Results</a></li>
+                        <li><a href="#table-wrong-answers">Bad answers</a></li>
+                        <li><a href="#table-statistics">Statistics</a></li>
+                        <li><a href="#clean-database">Clean data</a></li>
+                    </ul>
+                </nav>
+            {% endif %}
+        </header>
         <main class="admin-panel-content">
             {% if loadDataError is not empty %}
                 <p class="admin-panel-error">{{ loadDataError }}</p>
@@ -19,14 +32,6 @@
                     <p class="admin-panel-error password-error">Wrong password, try again</p>
                 {% endif %}
             {% else %}
-            <nav>
-                <ul id="navig" class="ul-nav">
-                    <li><a href="#table-results">Results</a></li>
-                    <li><a href="#table-wrong-answers">Bad answers</a></li>
-                    <li><a href="#table-statistics">Statistics</a></li>
-                    <li><a href="#clean-database">Clean data</a></li>
-                </ul>
-            </nav>
             <table class="table-results" id="table-results">
                 <thead>
                     <tr><th>No</th><th>Username</th><th>Score</th></tr>
