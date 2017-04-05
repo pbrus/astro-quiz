@@ -1,6 +1,11 @@
+body
+{
+  min-width: 700px;
+}
+
 .admin-panel-content
 {
-  margin: 20px auto;
+  margin: 0 auto;
   text-align: center;
   font-size: 1.3em;
 }
@@ -22,18 +27,34 @@
   font-size: 0.5em;
 }
 
+header
+{
+  padding-top: 50px;
+}
+
 header nav
 {
   font-size: 0.3em;
   text-align: center;
-  background-color: #fff6db;
+  background-color: rgb(255, 255, 255, 0.9);
   width: 100%;
-  line-height: 20px;
-  max-height: 20px;
-  padding: 5px 0;
+  min-width: 650px;
+  line-height: 30px;
+  max-height: 30px;
+  padding: 10px 0;
   position: fixed;
   top: 0;
   z-index: 100;
+}
+
+header nav:hover
+{
+  background-color: rgb(255, 255, 255, 1.0);
+}
+
+header > h1
+{
+  margin-top: 30px;
 }
 
 .ul-nav
@@ -71,12 +92,12 @@ header nav
 
 .ul-nav li:hover
 {
-  background-color: #ffffff;
+  background-color: #1367ef;
 }
 
-header
+.ul-nav li:hover > a
 {
-  padding-top: 40px;
+  color: #ffffff;
 }
 
 .table-results, .table-wrong-answers, .table-statistics
@@ -86,6 +107,12 @@ header
   border-collapse: collapse;
   margin: 0 auto;
   background: #262626;
+}
+
+.table-padding
+{
+  padding-top: 50px;
+  margin-bottom: 100px;
 }
 
 thead tr
@@ -112,12 +139,6 @@ td, th
 {
   border: 1px solid gray;
   padding: 1.0rem;
-}
-
-.table-wrong-answers, .table-statistics
-{
-  margin-top: 100px;
-  margin-bottom: 100px;
 }
 
 .table-wrong-answers span
@@ -164,4 +185,35 @@ td, th
 .clean-form
 {
   margin-bottom: 100px;
+}
+
+@media (max-width: 649px)
+{
+  header
+  {
+    padding-top: 0;
+  }
+
+  header nav
+  {
+    position: relative;
+  }
+
+  header > h1
+  {
+    margin-bottom: 45px;
+  }
+
+  .table-padding
+  {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 349px)
+{
+  header
+  {
+    font-size: 2.0em;
+  }
 }
