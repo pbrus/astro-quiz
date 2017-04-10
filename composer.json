@@ -9,12 +9,6 @@
             "homepage": "https://github.com/PBrus/"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/PBrus/Astro-quiz"
-        }
-    ],
     "require": {
         "php": "^7.0",
         "twig/twig": "~2.0"
