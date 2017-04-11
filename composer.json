@@ -9,6 +9,7 @@
             "homepage": "https://github.com/PBrus/"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "php": "^7.0",
         "twig/twig": "~2.0"
