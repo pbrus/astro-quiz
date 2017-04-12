@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+mv -f vendor/pbrus/astro-quiz/* .
+rm -rf vendor/pbrus
+composer dump-autoload
+rm install.bash
