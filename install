@@ -9,22 +9,22 @@ HTTPD_CONF=/opt/lampp/etc/httpd.conf
 
 if [ ! -e ${HTTPD_CONF} ]
 then
-    echo "Error: Installation has corrupted. File ${HTTPD_CONF} doesn't exist."
-    echo "Check localization of httpd.conf file (created during XAMPP installation)."
+    echo -e "\n\tError: Installation has corrupted. File ${HTTPD_CONF} doesn't exist."
+    echo -e "\tCheck localization of httpd.conf file (created during XAMPP installation)."
     exit
 else
-    sed -e 's,\(DocumentRoot \"\).*\(\"\),\1'$pwd'\2,' -e '1,300 s,\(Directory "\).*\(">\),\1'$pwd'\2,' ${HTTPD_CONF} > ${HTTPD_CONF}.tmp
+    sed -e 's,\(DocumentRoot \"\).*\(\"\),\1'${CURRENT_DIR}'\2,' -e '1,300 s,\(Directory "\).*\(">\),\1'${CURRENT_DIR}'\2,' ${HTTPD_CONF} > ${HTTPD_CONF}.tmp
     mv ${HTTPD_CONF}.tmp ${HTTPD_CONF}
     mv -f vendor/pbrus/astro-quiz/* .
     rm -rf vendor/pbrus
     composer dump-autoload
     /opt/lampp/lampp restart
-    echo "The installation is complete."
+    echo -e "\n\tThe installation is complete."
 fi
 
 while :
 do
-    echo -e "Delete this install file? [y/n]: "
+    echo -e "\n\tDelete this install file? [y/n]: "
     read ans
 
     if [ "$ans" == "y" ]
@@ -32,7 +32,7 @@ do
         rm ${INSTALL_FILE}
         if [ ! -e ${INSTALL_FILE} ]
         then
-            echo -e "The install file has been removed."
+            echo -e "\n\tThe install file has been removed."
         fi
         break
     elif [ "$ans" == "n" ]
