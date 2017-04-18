@@ -18,6 +18,7 @@ else
     mv -f vendor/pbrus/astro-quiz/* .
     rm -rf vendor/pbrus
     composer dump-autoload
+    chmod 666 database/database
     /opt/lampp/lampp restart
     echo -e "\n\tThe installation is complete."
 fi
