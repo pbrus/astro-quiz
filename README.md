@@ -4,12 +4,19 @@ A little advanced quiz for astronomy enthusiasts. Designed for students and smal
 
 ![astro-quiz](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/Astro_quiz.gif)
 
+## Introduction
+
+The program was designed to run locally, not in the Internet. The application uses a webbrowser only as an interface. For example astro-quiz doesn't cooperate with any database but stores all information in text files and utilizes a session mechanism. However, it can be used by many users simultaneously eg. for students in a classroom (LAN network).
+
 ## Installation
 
 ### General information
 
 I assume that you're not familiar with PHP applications and how to install them. Let's split the whole install process into significant parts:
-1. Download and install [XAMPP](https://www.apachefriends.org/download.html)
-2. ...
+1. Download and install [*XAMPP*](https://www.apachefriends.org/download.html)
+2. Install [*Composer*](https://getcomposer.org/download/)
 
-Note that this is the easiest way to install the application because the program is designed to work locally. For example astro-quiz doesn't use any database but stores all information in text files and uses a session mechanism.
+   If you successfully install *XAMPP* with default settings, `php` should be located at `/opt/lampp/bin/`
+3. ...
+
+Note that this is the easiest way to install the application because the program does't worry about security in the Internet.
