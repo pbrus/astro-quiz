@@ -1,8 +1,8 @@
-# Astro-quiz [![GitHub release](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/ver20170419.svg "download")](https://github.com/PBrus/Astro-quiz) ![Written in PHP](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/Php.svg "language") ![Written in HTML](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/Html.svg "language") ![Written in CSS](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/Css.svg "language")
+# Astro-quiz [![GitHub release](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/ver20170421.svg "download")](https://github.com/pbrus/astro-quiz) ![Written in PHP](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/php.svg "language") ![Written in HTML](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/html.svg "language") ![Written in CSS](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/css.svg "language")
 
 A little advanced quiz for astronomy enthusiasts. Designed for students and small groups of amateur astronomers.
 
-![astro-quiz](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/Astro_quiz.gif)
+![astro-quiz](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/astro-quiz.gif)
 
 ## Introduction
 
