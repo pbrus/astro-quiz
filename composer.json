@@ -1,12 +1,12 @@
 {
     "name": "pbrus/astro-quiz",
     "type": "project",
-    "homepage": "https://github.com/PBrus/Astro-quiz",
+    "homepage": "https://github.com/pbrus/astro-quiz",
     "license": "MIT",
     "authors": [
         {
             "name": "Przemysław Bruś",
-            "homepage": "https://github.com/PBrus/"
+            "homepage": "https://github.com/pbrus/"
         }
     ],
     "minimum-stability": "dev",

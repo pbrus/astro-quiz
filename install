@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # install file for astro-quiz
-# https://github.com/PBrus/Astro-quiz
+# https://github.com/pbrus/astro-quiz
 
 CURRENT_DIR=`pwd`
 INSTALL_FILE=install
