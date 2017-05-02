@@ -20,7 +20,7 @@ else
     composer dump-autoload
     chmod 666 database/database
     /opt/lampp/lampp restart
-    echo -e "\n\tThe installation is complete."
+    echo -e "\n\tThe installation has been completed."
 fi
 
 while :
