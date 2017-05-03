@@ -6,7 +6,7 @@ A little advanced quiz for astronomy enthusiasts. Designed for students and smal
 
 ## Introduction
 
-The program was designed to run locally, not on the Internet. The application uses a web browser only as an interface. For example, astro-quiz doesn't cooperate with any database but stores all information in text files and utilizes a session mechanism. However, it can be used by many users simultaneously, e.g. for students in a classroom (computers connected through LAN).
+The program was designed to run locally, not on the Internet. The application uses a web browser only as an interface. For example, **astro-quiz** doesn't cooperate with any database but stores all information in text files and utilizes a session mechanism. However, it can be used by many users simultaneously, e.g. for students in a classroom (computers connected through LAN).
 
 ## Installation
 
@@ -37,7 +37,7 @@ and run the script:
 ```bash
 $ bash vendor/pbrus/astro-quiz/install
 ```
-If everything goes well, you will see the message **The installation has been completed**. It's time to open your web browser and test the application typing `localhost` into the address bar.
+Note that the use of `sudo` instead of `su` sometimes can't call `composer`. If everything goes well, you will see the message **The installation has been completed**. It's time to open your web browser and test the application typing `localhost` into the address bar.
 
 ### Windows
 
@@ -76,3 +76,17 @@ DocumentRoot "D:/astro-quiz"
 ![localhost-edit](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/localhost-edit.png)
 
 Save changes and start/restart *Apache*. Open your web browser and test the application typing `localhost` into the address bar.
+
+## Usage
+
+The package contains demo files so you can easily test **astro-quiz** after the installation process. Of course you can prepare your own questions. Let's see the most important parts of the project.
+
+### Web browser
+
+A web browser is an interface for users and an administrator which oversees the users. To start quiz type into the address bar `localhost`. To see results, statistics and to manage the database, please type into address bar `localhost/admin.php`. Access to this page is secured by the password stored in the `astroquiz.cfg` file.
+
+### Define own quiz
+
+All files needed to define own quiz must be located at the `files/` directory. You should create a text file to store all questions, points, answers and names of images if are required. You can create as many text files as you need. The current quiz is called in the `astroquiz.cfg` file.
+
+I encourage to visit my website to see more detailed description of this program. The current link can be found on my [GitHub profile](https://github.com/pbrus).
