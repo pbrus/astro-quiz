@@ -83,7 +83,7 @@ The package contains demo files so you can easily test **astro-quiz** after the 
 
 ### Web browser
 
-A web browser is a ![BUI](https://en.wikipedia.org/wiki/Browser_user_interface) for users and an administrator which oversees the users. To start quiz type into the address bar `localhost`. To see results, statistics and to manage the database, please type into address bar `localhost/admin.php`. Access to this page is secured by the password stored in the `astroquiz.cfg` file.
+A web browser is a [BUI](https://en.wikipedia.org/wiki/Browser_user_interface) for users and an administrator which oversees the users. To start quiz type into the address bar `localhost`. To see results, statistics and to manage the database, please type into address bar `localhost/admin.php`. Access to this page is secured by the password stored in the `astroquiz.cfg` file.
 
 ### Define own quiz
 
@@ -111,3 +111,7 @@ I encourage to visit my website to see more detailed description of this project
    * *question2.jpg*
    * *question4.jpg*
    * *question5.jpg*
+
+## License
+
+**Astro-quiz** is licensed under the [MIT license](http://opensource.org/licenses/MIT). Some external components have own licenses. See the [license](https://github.com/pbrus/astro-quiz/blob/master/LICENSE) file for more details.
