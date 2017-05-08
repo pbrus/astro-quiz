@@ -14,7 +14,7 @@ The program was designed to run locally, not on the Internet. The application us
 
 I assume that you're not familiar with PHP applications and how to install them. Let's split the whole installation process into significant parts:
 1. Download and install [*XAMPP*](https://www.apachefriends.org/download.html) with PHP 7.0 or greater
-2. Install [*Composer*](https://getcomposer.org/download/)
+2. Install [*Composer*](https://getcomposer.org/) for [Linux](https://getcomposer.org/download/) or [Windows](https://getcomposer.org/doc/00-intro.md#installation-windows)
 3. Change the localhost path just editing two lines in `httpd.conf` file
 4. Start/restart *XAMPP*
 5. Open yor favourite web browser and type `localhost` into the address bar
@@ -83,7 +83,7 @@ The package contains demo files so you can easily test **astro-quiz** after the 
 
 ### Web browser
 
-A web browser is a [BUI](https://en.wikipedia.org/wiki/Browser_user_interface) for users and an administrator which oversees the users. To start quiz type into the address bar `localhost`. To see results, statistics and to manage the database, please type into address bar `localhost/admin.php`. Access to this page is secured by the password stored in the `astroquiz.cfg` file.
+A web browser is a [BUI](https://en.wikipedia.org/wiki/Browser_user_interface) for users and an administrator which oversees the users. To start quiz type into the address bar `localhost`. To see results, statistics and to manage the database please type into address bar `localhost/admin.php`. Access to this page is secured by the password stored in the `astroquiz.cfg` file.
 
 ### Define own quiz
 
