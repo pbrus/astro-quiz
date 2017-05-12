@@ -39,6 +39,11 @@ $ bash vendor/pbrus/astro-quiz/install
 ```
 Note that the use of `sudo` instead of `su` sometimes can't call `composer`. If everything goes well, you will see the message **The installation has been completed**. It's time to open your web browser and test the application typing `localhost` into the address bar.
 
+To start *XAMPP* after computer rebooting type into the terminal window:
+```bash
+$ sudo /opt/lampp/lampp start
+```
+
 ### Windows
 
 Execute first two instructions from the **General information** section manually. If you successfully install *XAMPP* with default settings, `php.exe` should be located at `C:\xampp\php\`. Note that you have to point at the `php.exe` file during *Composer* installation.
@@ -76,6 +81,8 @@ DocumentRoot "D:/astro-quiz"
 ![localhost-edit](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/localhost-edit.png)
 
 Save changes and start/restart *Apache*. Open your web browser and test the application typing `localhost` into the address bar.
+
+To start *XAMPP* after computer rebooting open the *XAMPP Control Panel* and start the *Apache* module.
 
 ## Usage
 
