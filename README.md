@@ -23,7 +23,7 @@ Note that this is the easiest way to install the application because the program
 
 ### Linux
 
-Execute first two instructions from the **General information** section manually. If you successfully install *XAMPP* with default settings, `php` should be located at `/opt/lampp/bin/`. After installation I recommend to move the `composer.phar` file to any catalog pointed by the `$PATH` variable and to change it's name to `composer`.
+Execute first two instructions from the **General information** section manually. If you successfully install *XAMPP* with default settings, `php` should be located at `/opt/lampp/bin/`. After installation I recommend to move the `composer.phar` file to any catalog pointed by the `$PATH` variable and to change its name to `composer`.
 
 In the next step choose the destination directory where you want to install application, open a terminal window and go there. Download the repo and all required components typing:
 ```bash
