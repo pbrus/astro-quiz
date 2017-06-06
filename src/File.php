@@ -1,6 +1,8 @@
 <?php
 
 namespace Brus;
+use Brus\Exception\NoFileException;
+use Brus\Exception\NoFileAccessException;
 
 class File
 {
@@ -71,12 +73,4 @@ class File
 
         return $status;
     }
-}
-
-class NoFileException extends \Exception
-{
-}
-
-class NoFileAccessException extends \Exception
-{
 }

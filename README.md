@@ -1,4 +1,4 @@
-# Astro-quiz [![GitHub release](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/ver20170421.svg "download")](https://github.com/pbrus/astro-quiz) ![Written in PHP](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/php.svg "language") ![Written in HTML](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/html.svg "language") ![Written in CSS](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/css.svg "language")
+# Astro-quiz [![GitHub release](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/ver20170606.svg "download")](https://github.com/pbrus/astro-quiz) ![Written in PHP](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/php.svg "language") ![Written in HTML](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/html.svg "language") ![Written in CSS](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/css.svg "language")
 
 A little advanced quiz for astronomy enthusiasts. Designed for students and small groups of amateur astronomers.
 
@@ -101,18 +101,18 @@ I encourage to visit my website to see more detailed description of this project
 ## Credits
 
  * [Pure CSS Circular Percentage Bar](http://www.cssscript.com/pure-css-circular-percentage-bar/)
-    
+
     Used on the last page with results.
-    
+
  * [Fontello - icon fonts generator](http://fontello.com/)
- 
+
    Used icons:
    * *icon-check*
    * *icon-check-empty*
    * *icon-right-circled2*
-   
+
  * Demo images from [My subjective astronomy](https://mozdzierski.wordpress.com/my-subjective-astronomy/)
- 
+
    Used files:
    * *question1.jpg*
    * *question2.jpg*

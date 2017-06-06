@@ -19,13 +19,13 @@ try {
     $fileWithQuestions = $configureFile->getFilenameWithQuestions();
     $questionFile = new QuestionFile("files/" . $fileWithQuestions);
     $databaseFile = new DatabaseFile("database/database", "r+");
-} catch (AstroQuiz\WrongConfiguration $err) {
+} catch (AstroQuiz\Exception\WrongConfiguration $err) {
     $loadDataCorrectly = FALSE;
     $loadDataError = $err->getMessage();
-} catch (Brus\NoFileException $err) {
+} catch (Brus\Exception\NoFileException $err) {
     $loadDataCorrectly = FALSE;
     $loadDataError = $err->getMessage();
-} catch (Brus\NoFileAccessException $err) {
+} catch (Brus\Exception\NoFileAccessException $err) {
     $loadDataCorrectly = FALSE;
     $loadDataError = $err->getMessage();
 }

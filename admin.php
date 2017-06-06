@@ -13,11 +13,11 @@ $loadDataError = NULL;
 try {
     $configureFile = new ConfigureFile("astroquiz.cfg");
     $password = $configureFile->getPassword();
-} catch (AstroQuiz\WrongConfiguration $err) {
+} catch (AstroQuiz\Exception\WrongConfiguration $err) {
     $loadDataError = $err->getMessage();
-} catch (Brus\NoFileException $err) {
+} catch (Brus\Exception\NoFileException $err) {
     $loadDataError = $err->getMessage();
-} catch (Brus\NoFileAccessException $err) {
+} catch (Brus\Exception\NoFileAccessException $err) {
     $loadDataError = $err->getMessage();
 }
 

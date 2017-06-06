@@ -21,9 +21,9 @@ try {
     $databaseFile->saveUserData($user, $allQuestions);
 } catch (AstroQuiz\FailureDataSavingException $err) {
     $accessDatabaseError = $err->getMessage();
-} catch (Brus\NoFileException $err) {
+} catch (Brus\Exception\NoFileException $err) {
     $accessDatabaseError = $err->getMessage();
-} catch (Brus\NoFileAccessException $err) {
+} catch (Brus\Exception\NoFileAccessException $err) {
     $accessDatabaseError = $err->getMessage();
 }
 

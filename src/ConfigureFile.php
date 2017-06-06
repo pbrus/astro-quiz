@@ -2,6 +2,7 @@
 
 namespace AstroQuiz;
 use Brus\File;
+use AstroQuiz\Exception\WrongConfiguration;
 
 class ConfigureFile extends File
 {
@@ -68,8 +69,4 @@ class ConfigureFile extends File
             }
         }
     }
-}
-
-class WrongConfiguration extends \Exception
-{
 }
