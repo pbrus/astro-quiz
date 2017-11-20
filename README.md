@@ -23,7 +23,7 @@ Note that this is the easiest way to install the application because the program
 
 ### Linux
 
-Execute first two instructions from the **General information** section manually. If you successfully install *XAMPP* with default settings, `php` should be located at `/opt/lampp/bin/`. After installation I recommend to move the `composer.phar` file to any catalog pointed by the `$PATH` variable and to change its name to `composer`.
+Execute first two instructions from the **General information** section manually. If you successfully install *XAMPP* with default settings, `php` should be located in the `/opt/lampp/bin/` directory. After installation I recommend to move the `composer.phar` file to any catalog pointed by the `$PATH` variable and to change its name to `composer`.
 
 In the next step choose the destination directory where you want to install application, open a terminal window and go there. Download the repo and all required components typing:
 ```bash
@@ -46,11 +46,11 @@ $ sudo /opt/lampp/lampp start
 
 ### Windows
 
-Execute first two instructions from the **General information** section manually. If you successfully install *XAMPP* with default settings, `php.exe` should be located at `C:\xampp\php\`. Note that you have to point at the `php.exe` file during *Composer* installation.
+Execute first two instructions from the **General information** section manually. If you successfully install *XAMPP* with default settings, `php.exe` should be located in the `C:\xampp\php\` directory. Note that you have to point at the `php.exe` file during *Composer* installation.
 
 ![composer-install](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/composer-install.png)
 
-In the next step create an empty directory to store the whole project. Let's assume that it will be the `astro-quiz` located at `D:\`, i.e. `D:\astro-quiz\`. Open the [*cmd.exe*](https://en.wikipedia.org/wiki/Cmd.exe) and go there typing:
+In the next step create an empty directory to store the whole project. Let's assume that it will be the `astro-quiz` located in `D:\`, i.e. `D:\astro-quiz\`. Open the [*cmd.exe*](https://en.wikipedia.org/wiki/Cmd.exe) and go there typing:
 ```cmd
 > D:
 ```
@@ -94,7 +94,7 @@ A web browser is a [BUI](https://en.wikipedia.org/wiki/Browser_user_interface) f
 
 ### Define own quiz
 
-All files needed to define own quiz must be located at the `files/` directory. You should create a text file to store all questions, points, answers and names of images if are required. You can create as many text files as you need. The current quiz is called in the `astroquiz.cfg` file.
+All files needed to define own quiz must be located in the `files/` directory. You should create a text file to store all questions, points, answers and names of images if are required. You can create as many text files as you need. The current quiz is called in the `astroquiz.cfg` file.
 
 I encourage to visit my website to see more detailed description of this project. The current link can be found on my [GitHub profile](https://github.com/pbrus).
 
