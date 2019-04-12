@@ -1,4 +1,9 @@
-# Astro-quiz [![GitHub release](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/ver20170606.svg "download")](https://github.com/pbrus/astro-quiz) ![Written in PHP](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/php.svg "language") ![Written in HTML](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/html.svg "language") ![Written in CSS](http://www.astro.uni.wroc.pl/ludzie/brus/img/github/css.svg "language")
+# Astro-quiz
+[![GitHub release](https://img.shields.io/badge/ver.-0.1.0-brightgreen.svg "download")](https://github.com/pbrus/astro-quiz)
+[![Written in PHP](https://img.shields.io/badge/code-PHP-blue.svg "language")](https://www.php.net/)
+[![License](https://img.shields.io/badge/license-MIT-yellow.svg "MIT license")](https://github.com/pbrus/astro-quiz/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/license-SIL-orange.svg "MIT license")](https://github.com/pbrus/astro-quiz/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/license-CC--BY--NC-lightgray.svg "MIT license")](https://github.com/pbrus/astro-quiz/blob/master/LICENSE)
 
 A little advanced quiz for astronomy enthusiasts. Designed for students and small groups of amateur astronomers.
 
